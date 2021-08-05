@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "164915-nissan_gt_r-nissan-legkovyye_avtomobili-sportkar-nissan_skyline-360x640.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
