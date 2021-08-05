@@ -319,9 +319,15 @@ class StartGameViewController: UIViewController {
     private func setupLabels() {
         speedometerValueLabel.text = String(format: "%.0f", PlayersManager.shared.currentPlayer.stepFrameSpeed * 10)
         setupTextGameOverLabel()
+        scoreLabel.text = "Score: \(score)"
+        playerNameLabel.text = PlayersManager.shared.currentPlayer.name
+        bestScoreLabel.text = "Best: \(PlayersManager.shared.currentPlayer.scores)"
         configurationLabel(scoreLabel, 22)
         configurationLabel(playerNameLabel, 22)
         configurationLabel(bestScoreLabel, 22)
+        view.addSubview(scoreLabel)
+        view.addSubview(playerNameLabel)
+        view.addSubview(bestScoreLabel)
     }
 
     private func setupButtons() {

@@ -285,7 +285,7 @@
 			buildConfigurationList = 84D4B87E265667AD004BA330 /* Build configuration list for PBXNativeTarget "RacingCarGame" */;
 			buildPhases = (
 				DB21A79A5B0298C5654FDC6F /* [CP] Check Pods Manifest.lock */,
-				84AF726F26B93E9E00C808DE /* Swiftlint */,
+				8472410A26BC900C00FCF6AB /* Swiftlint */,
 				84D4B866265667AA004BA330 /* Sources */,
 				84D4B867265667AA004BA330 /* Frameworks */,
 				84D4B868265667AA004BA330 /* Resources */,
@@ -392,7 +392,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
-		84AF726F26B93E9E00C808DE /* Swiftlint */ = {
+		8472410A26BC900C00FCF6AB /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
