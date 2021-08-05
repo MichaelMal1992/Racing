@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		844AD0C526B720D5008A217F /* moveCar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0C426B720D5008A217F /* moveCar.mp3 */; };
 		844AD0D326B7453B008A217F /* testSystemMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0D226B7453B008A217F /* testSystemMusic.mp3 */; };
 		844AD0D726B77F49008A217F /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0D626B77F49008A217F /* jump.mp3 */; };
+		8472410826BC745600FCF6AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8472410726BC745600FCF6AB /* GoogleService-Info.plist */; };
 		84AE9CD7267BB3AC0015B080 /* UIViewController+ConfigurationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9CD6267BB3AC0015B080 /* UIViewController+ConfigurationButton.swift */; };
 		84AE9CE5267BBF580015B080 /* UIViewController+ConfigurationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9CE4267BBF580015B080 /* UIViewController+ConfigurationLabel.swift */; };
 		84AE9CED267BE27B0015B080 /* UIViewController+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9CEC267BE27B0015B080 /* UIViewController+ImageView.swift */; };
@@ -80,6 +81,7 @@
 		844AD0C426B720D5008A217F /* moveCar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moveCar.mp3; sourceTree = "<group>"; };
 		844AD0D226B7453B008A217F /* testSystemMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = testSystemMusic.mp3; sourceTree = "<group>"; };
 		844AD0D626B77F49008A217F /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		8472410726BC745600FCF6AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84AE9CD6267BB3AC0015B080 /* UIViewController+ConfigurationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConfigurationButton.swift"; sourceTree = "<group>"; };
 		84AE9CE4267BBF580015B080 /* UIViewController+ConfigurationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConfigurationLabel.swift"; sourceTree = "<group>"; };
 		84AE9CEC267BE27B0015B080 /* UIViewController+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ImageView.swift"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				84D4B876265667AD004BA330 /* Assets.xcassets */,
 				84D4B878265667AD004BA330 /* LaunchScreen.storyboard */,
 				84D4B87B265667AD004BA330 /* Info.plist */,
+				8472410726BC745600FCF6AB /* GoogleService-Info.plist */,
 			);
 			path = RacingCarGame;
 			sourceTree = "<group>";
@@ -286,6 +289,8 @@
 				84D4B866265667AA004BA330 /* Sources */,
 				84D4B867265667AA004BA330 /* Frameworks */,
 				84D4B868265667AA004BA330 /* Resources */,
+				87B5D6EF3400AC3F0EAC0003 /* [CP] Embed Pods Frameworks */,
+				8472410926BC82EC00FCF6AB /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -346,6 +351,7 @@
 				844AD0C526B720D5008A217F /* moveCar.mp3 in Resources */,
 				84EC82A12662D0AA00CC593D /* notacumulus.ttf in Resources */,
 				844AD0AD26B6973F008A217F /* carsCrash.mp3 in Resources */,
+				8472410826BC745600FCF6AB /* GoogleService-Info.plist in Resources */,
 				84EC82942662B24400CC593D /* MagicOwl-PersonalUse.otf in Resources */,
 				84EC829E2662CEF900CC593D /* Decaying Felt Pen.ttf in Resources */,
 				8440210126B634E700E07DB7 /* gameMusic5.mp3 in Resources */,
@@ -366,6 +372,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8472410926BC82EC00FCF6AB /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		84AF726F26B93E9E00C808DE /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,6 +409,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		87B5D6EF3400AC3F0EAC0003 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		DB21A79A5B0298C5654FDC6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -496,7 +539,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -558,6 +602,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -586,6 +631,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42L4BWH76Z;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RacingCarGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -607,6 +653,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42L4BWH76Z;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RacingCarGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
