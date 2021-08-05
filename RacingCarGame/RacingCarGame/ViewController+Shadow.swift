@@ -8,7 +8,7 @@
 import UIKit
 
 extension ViewController {
-    
+
     func shadowButtons(button: UIView) {
         button.layer.shadowColor = UIColor.white.cgColor
         button.layer.shadowRadius = 15
@@ -17,5 +17,3 @@ extension ViewController {
         view.addSubview(button)
     }
 }
-
-

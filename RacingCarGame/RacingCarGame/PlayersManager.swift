@@ -12,5 +12,4 @@ class PlayersManager {
     static var shared = PlayersManager()
     var players: [PlayerData] = []
     var currentPlayer = PlayerData()
-   
 }
