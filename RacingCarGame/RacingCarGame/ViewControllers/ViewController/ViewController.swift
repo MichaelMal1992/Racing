@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
+        NotificationsManager.shared.remove()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +122,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func exitButtonPressed(_ sender: Any) {
+        NotificationsManager.shared.push()
         exit(0)
     }
 }

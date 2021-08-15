@@ -665,6 +665,7 @@ class StartGameViewController: UIViewController {
     }
 
     @IBAction private func exitButtonPressed(_ sender: UIButton) {
+        NotificationsManager.shared.push()
         exit(0)
     }
 }
