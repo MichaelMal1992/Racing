@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841CA91826C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */; };
 		84225B152670CA2B00D86F14 /* PlayersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84225B142670CA2B00D86F14 /* PlayersManager.swift */; };
 		844020F026B62D2500E07DB7 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844020EF26B62D2500E07DB7 /* Sound.swift */; };
 		844020F626B62F4C00E07DB7 /* menuMusic3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844020F326B62F4C00E07DB7 /* menuMusic3.mp3 */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartGameViewController+AVAudioDelegate.swift"; sourceTree = "<group>"; };
 		84225B142670CA2B00D86F14 /* PlayersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersManager.swift; sourceTree = "<group>"; };
 		844020EF26B62D2500E07DB7 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		844020F326B62F4C00E07DB7 /* menuMusic3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic3.mp3; sourceTree = "<group>"; };
@@ -143,6 +145,171 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		841CA90126C9623B00C90C05 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B86D265667AA004BA330 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		841CA90226C9627200C90C05 /* SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B86F265667AA004BA330 /* SceneDelegate.swift */,
+			);
+			path = SceneDelegate;
+			sourceTree = "<group>";
+		};
+		841CA90326C9628B00C90C05 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				841CA91026C9646900C90C05 /* ViewController */,
+				841CA90726C9630200C90C05 /* StartGame */,
+				841CA90626C962FE00C90C05 /* Settings */,
+				841CA90526C962FA00C90C05 /* Score */,
+				841CA90426C962F500C90C05 /* ChangePlayer */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		841CA90426C962F500C90C05 /* ChangePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				84E923CA26B0B55300C12B79 /* ChangePlayerViewController.swift */,
+			);
+			path = ChangePlayer;
+			sourceTree = "<group>";
+		};
+		841CA90526C962FA00C90C05 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B88826567F51004BA330 /* ScoreViewController.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
+		841CA90626C962FE00C90C05 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B88526567F43004BA330 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		841CA90726C9630200C90C05 /* StartGame */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B8822656780C004BA330 /* StartGameViewController.swift */,
+				841CA91626C96B2000C90C05 /* Extensions */,
+			);
+			path = StartGame;
+			sourceTree = "<group>";
+		};
+		841CA90826C9638300C90C05 /* CustomClass */ = {
+			isa = PBXGroup;
+			children = (
+				841CA90926C963C400C90C05 /* PlayerData */,
+				841CA90A26C963D200C90C05 /* PlayersScoresTableViewCell */,
+				841CA90B26C963D600C90C05 /* AlertTextField */,
+				841CA90C26C963D900C90C05 /* LetterColors */,
+				841CA90D26C963DC00C90C05 /* SkinCars */,
+				841CA90E26C9643500C90C05 /* Sound */,
+			);
+			path = CustomClass;
+			sourceTree = "<group>";
+		};
+		841CA90926C963C400C90C05 /* PlayerData */ = {
+			isa = PBXGroup;
+			children = (
+				84E923BC26AEFA9700C12B79 /* PlayerData.swift */,
+			);
+			path = PlayerData;
+			sourceTree = "<group>";
+		};
+		841CA90A26C963D200C90C05 /* PlayersScoresTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84E923BE26AEFD5F00C12B79 /* PlayersScoresTableViewCell.swift */,
+				84E923BF26AEFD5F00C12B79 /* PlayersScoresTableViewCell.xib */,
+			);
+			path = PlayersScoresTableViewCell;
+			sourceTree = "<group>";
+		};
+		841CA90B26C963D600C90C05 /* AlertTextField */ = {
+			isa = PBXGroup;
+			children = (
+				84E923C426B0652200C12B79 /* AlertTextField.swift */,
+			);
+			path = AlertTextField;
+			sourceTree = "<group>";
+		};
+		841CA90C26C963D900C90C05 /* LetterColors */ = {
+			isa = PBXGroup;
+			children = (
+				84EC829A2662B62600CC593D /* LetterColors.swift */,
+			);
+			path = LetterColors;
+			sourceTree = "<group>";
+		};
+		841CA90D26C963DC00C90C05 /* SkinCars */ = {
+			isa = PBXGroup;
+			children = (
+				84F3CB05266A9C5600901A26 /* SkinCars.swift */,
+			);
+			path = SkinCars;
+			sourceTree = "<group>";
+		};
+		841CA90E26C9643500C90C05 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				844020EF26B62D2500E07DB7 /* Sound.swift */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		841CA91026C9646900C90C05 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B871265667AA004BA330 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		841CA91126C9649F00C90C05 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84225B142670CA2B00D86F14 /* PlayersManager.swift */,
+				84D4B88F265680EF004BA330 /* FactoryViewControllers.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		841CA91226C964BF00C90C05 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B8B32659A18E004BA330 /* DirectionMove.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		841CA91326C964F300C90C05 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B873265667AA004BA330 /* Main.storyboard */,
+				84D4B878265667AD004BA330 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		841CA91626C96B2000C90C05 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		844020F126B62EFB00E07DB7 /* MainMusic */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +360,7 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
-		84AE9CEA267BD0CE0015B080 /* Extetions */ = {
+		84AE9CEA267BD0CE0015B080 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				84AE9CD6267BB3AC0015B080 /* UIViewController+ConfigurationButton.swift */,
@@ -205,7 +372,7 @@
 				84E923C226AF4F8F00C12B79 /* UIViewController+Alert.swift */,
 				84E923D026B30C4700C12B79 /* UIViewController+CreateAlert.swift */,
 			);
-			path = Extetions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		84D4B861265667AA004BA330 = {
@@ -229,36 +396,24 @@
 		84D4B86C265667AA004BA330 /* RacingCarGame */ = {
 			isa = PBXGroup;
 			children = (
-				84D4B86D265667AA004BA330 /* AppDelegate.swift */,
-				84D4B86F265667AA004BA330 /* SceneDelegate.swift */,
-				84D4B871265667AA004BA330 /* ViewController.swift */,
-				84D4B8822656780C004BA330 /* StartGameViewController.swift */,
-				84D4B88526567F43004BA330 /* SettingsViewController.swift */,
-				84D4B88826567F51004BA330 /* ScoreViewController.swift */,
-				84E923CA26B0B55300C12B79 /* ChangePlayerViewController.swift */,
-				84D4B88F265680EF004BA330 /* FactoryViewControllers.swift */,
-				84D4B8B32659A18E004BA330 /* DirectionMove.swift */,
-				84E923BC26AEFA9700C12B79 /* PlayerData.swift */,
-				84E923BE26AEFD5F00C12B79 /* PlayersScoresTableViewCell.swift */,
-				84E923BF26AEFD5F00C12B79 /* PlayersScoresTableViewCell.xib */,
-				84225B142670CA2B00D86F14 /* PlayersManager.swift */,
-				84E923C426B0652200C12B79 /* AlertTextField.swift */,
-				844020EF26B62D2500E07DB7 /* Sound.swift */,
-				84EC829A2662B62600CC593D /* LetterColors.swift */,
-				84F3CB05266A9C5600901A26 /* SkinCars.swift */,
+				841CA90126C9623B00C90C05 /* AppDelegate */,
+				841CA90226C9627200C90C05 /* SceneDelegate */,
+				841CA90326C9628B00C90C05 /* ViewControllers */,
+				841CA90826C9638300C90C05 /* CustomClass */,
+				841CA91126C9649F00C90C05 /* Managers */,
 				844AD09126B69347008A217F /* Music */,
-				84AE9CEA267BD0CE0015B080 /* Extetions */,
-				84EC828F2662B16E00CC593D /* fonts */,
-				84D4B873265667AA004BA330 /* Main.storyboard */,
+				84AE9CEA267BD0CE0015B080 /* Extension */,
+				841CA91226C964BF00C90C05 /* Enums */,
+				84EC828F2662B16E00CC593D /* Fonts */,
+				841CA91326C964F300C90C05 /* Storyboards */,
 				84D4B876265667AD004BA330 /* Assets.xcassets */,
-				84D4B878265667AD004BA330 /* LaunchScreen.storyboard */,
 				84D4B87B265667AD004BA330 /* Info.plist */,
 				8472410726BC745600FCF6AB /* GoogleService-Info.plist */,
 			);
 			path = RacingCarGame;
 			sourceTree = "<group>";
 		};
-		84EC828F2662B16E00CC593D /* fonts */ = {
+		84EC828F2662B16E00CC593D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				84EC82A02662D0AA00CC593D /* notacumulus.ttf */,
@@ -266,7 +421,7 @@
 				84EC82972662B4E500CC593D /* XXX Thirty.otf */,
 				84EC82932662B24400CC593D /* MagicOwl-PersonalUse.otf */,
 			);
-			path = fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A82DD77934D352A519B790C9 /* Frameworks */ = {
@@ -466,6 +621,7 @@
 				84AE9CED267BE27B0015B080 /* UIViewController+ImageView.swift in Sources */,
 				84FA1E1D267F9D9400DDFA5B /* UIViewController+CodableData+DataValue.swift in Sources */,
 				84FA1E1B267E14B100DDFA5B /* UIViewController+CurrentTime.swift in Sources */,
+				841CA91826C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift in Sources */,
 				844020F026B62D2500E07DB7 /* Sound.swift in Sources */,
 				84E923C526B0652300C12B79 /* AlertTextField.swift in Sources */,
 				84E923C026AEFD5F00C12B79 /* PlayersScoresTableViewCell.swift in Sources */,
