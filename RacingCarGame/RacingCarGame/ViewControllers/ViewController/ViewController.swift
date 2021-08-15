@@ -7,7 +7,6 @@
 
 import UIKit
 import AVKit
-import CoreMotion
 
 class ViewController: UIViewController {
     @IBOutlet weak private var containerForButtonsView: UIView!
@@ -16,12 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak private var scoreButton: UIButton!
     @IBOutlet weak private var exitButton: UIButton!
     @IBOutlet weak private var screenImageView: UIImageView!
-    private let motionManager = CMMotionManager()
+//    private let motionManager = CMMotionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtons()
-        NotificationsManager.shared.remove()
+        NotificationsManager.shared.push()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,41 +37,13 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        parallax()
+        ParalaxManager.shared.start(view, screenImageView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Sound.menu.stop()
-        motionManager.stopAccelerometerUpdates()
-    }
-
-    private func parallax() {
-        if motionManager.isAccelerometerAvailable {
-            motionManager.accelerometerUpdateInterval = 1 / 30
-            motionManager.startAccelerometerUpdates(to: .main) { data, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                if let data = data {
-                    UIView.animate(withDuration: 0.5) {
-                        if data.acceleration.x > 0 {
-                            self.screenImageView.center.x = self.view.center.x + 20
-                        }
-                        if data.acceleration.x < 0 {
-                            self.screenImageView.center.x = self.view.center.x - 20
-                        }
-                        if data.acceleration.z < 0 {
-                            self.screenImageView.center.y = self.view.center.y - 20
-                        }
-                        if data.acceleration.z > 0 {
-                            self.screenImageView.center.y = self.view.center.y + 20
-                        }
-                    }
-                }
-            }
-        }
+        ParalaxManager.shared.stop()
     }
 
     private func playMenuMusic() {
@@ -122,7 +93,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func exitButtonPressed(_ sender: Any) {
-        NotificationsManager.shared.push()
         exit(0)
     }
 }

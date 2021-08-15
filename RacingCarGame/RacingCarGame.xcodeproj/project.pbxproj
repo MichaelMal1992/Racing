@@ -10,6 +10,8 @@
 		841CA91826C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */; };
 		841CA91A26C96E4800C90C05 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91926C96E4800C90C05 /* NotificationsManager.swift */; };
 		841CA91D26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91C26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift */; };
+		841CA91F26C97E9800C90C05 /* ParalaxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91E26C97E9800C90C05 /* ParalaxManager.swift */; };
+		841CA92126C9832B00C90C05 /* StartGameViewController+PlayMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA92026C9832B00C90C05 /* StartGameViewController+PlayMusic.swift */; };
 		84225B152670CA2B00D86F14 /* PlayersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84225B142670CA2B00D86F14 /* PlayersManager.swift */; };
 		844020F026B62D2500E07DB7 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844020EF26B62D2500E07DB7 /* Sound.swift */; };
 		844020F626B62F4C00E07DB7 /* menuMusic3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844020F326B62F4C00E07DB7 /* menuMusic3.mp3 */; };
@@ -69,6 +71,8 @@
 		841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartGameViewController+AVAudioDelegate.swift"; sourceTree = "<group>"; };
 		841CA91926C96E4800C90C05 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		841CA91C26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationsBadge.swift"; sourceTree = "<group>"; };
+		841CA91E26C97E9800C90C05 /* ParalaxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParalaxManager.swift; sourceTree = "<group>"; };
+		841CA92026C9832B00C90C05 /* StartGameViewController+PlayMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartGameViewController+PlayMusic.swift"; sourceTree = "<group>"; };
 		84225B142670CA2B00D86F14 /* PlayersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersManager.swift; sourceTree = "<group>"; };
 		844020EF26B62D2500E07DB7 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		844020F326B62F4C00E07DB7 /* menuMusic3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic3.mp3; sourceTree = "<group>"; };
@@ -287,6 +291,7 @@
 				84225B142670CA2B00D86F14 /* PlayersManager.swift */,
 				84D4B88F265680EF004BA330 /* FactoryViewControllers.swift */,
 				841CA91926C96E4800C90C05 /* NotificationsManager.swift */,
+				841CA91E26C97E9800C90C05 /* ParalaxManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */,
+				841CA92026C9832B00C90C05 /* StartGameViewController+PlayMusic.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				841CA91A26C96E4800C90C05 /* NotificationsManager.swift in Sources */,
+				841CA92126C9832B00C90C05 /* StartGameViewController+PlayMusic.swift in Sources */,
 				84D4B890265680EF004BA330 /* FactoryViewControllers.swift in Sources */,
 				84E923BD26AEFA9700C12B79 /* PlayerData.swift in Sources */,
 				84D4B872265667AA004BA330 /* ViewController.swift in Sources */,
@@ -644,6 +651,7 @@
 				84F3CB06266A9C5600901A26 /* SkinCars.swift in Sources */,
 				84E923CB26B0B55300C12B79 /* ChangePlayerViewController.swift in Sources */,
 				84AE9CE5267BBF580015B080 /* UIViewController+ConfigurationLabel.swift in Sources */,
+				841CA91F26C97E9800C90C05 /* ParalaxManager.swift in Sources */,
 				84D4B88626567F43004BA330 /* SettingsViewController.swift in Sources */,
 				84D4B8832656780C004BA330 /* StartGameViewController.swift in Sources */,
 				84EC829B2662B62600CC593D /* LetterColors.swift in Sources */,
