@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8400D3C726D3921D00D11035 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400D3C626D3921D00D11035 /* RealmManager.swift */; };
 		841CA91826C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */; };
 		841CA91A26C96E4800C90C05 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91926C96E4800C90C05 /* NotificationsManager.swift */; };
 		841CA91D26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CA91C26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8400D3C626D3921D00D11035 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		841CA91726C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartGameViewController+AVAudioDelegate.swift"; sourceTree = "<group>"; };
 		841CA91926C96E4800C90C05 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		841CA91C26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationsBadge.swift"; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				84D4B88F265680EF004BA330 /* FactoryViewControllers.swift */,
 				841CA91926C96E4800C90C05 /* NotificationsManager.swift */,
 				841CA91E26C97E9800C90C05 /* ParalaxManager.swift */,
+				8400D3C626D3921D00D11035 /* RealmManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				84E923C526B0652300C12B79 /* AlertTextField.swift in Sources */,
 				84E923C026AEFD5F00C12B79 /* PlayersScoresTableViewCell.swift in Sources */,
 				841CA91D26C9775400C90C05 /* AppDelegate+NotificationsBadge.swift in Sources */,
+				8400D3C726D3921D00D11035 /* RealmManager.swift in Sources */,
 				84F3CB06266A9C5600901A26 /* SkinCars.swift in Sources */,
 				84E923CB26B0B55300C12B79 /* ChangePlayerViewController.swift in Sources */,
 				84AE9CE5267BBF580015B080 /* UIViewController+ConfigurationLabel.swift in Sources */,
