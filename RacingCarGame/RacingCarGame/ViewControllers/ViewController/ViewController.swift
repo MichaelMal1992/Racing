@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak private var scoreButton: UIButton!
     @IBOutlet weak private var exitButton: UIButton!
     @IBOutlet weak private var screenImageView: UIImageView!
-//    private let motionManager = CMMotionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        PlayersManager.shared.players = decodingData(getDataValue())
+        PlayersManager.shared.players = RealmManager.shared.allPlayers
         if getLastNameValue().isEmpty {
             createAlertWithTextField()
         } else {
@@ -53,7 +52,7 @@ class ViewController: UIViewController {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.volumeMusic
+                player.volume = PlayersManager.shared.currentPlayer.volumeMusic 
                 player.play()
                 Sound.menu = player
             } catch {
@@ -63,7 +62,7 @@ class ViewController: UIViewController {
     }
 
     private func loadingUserDefaults() {
-        PlayersManager.shared.players = decodingData(getDataValue())
+        PlayersManager.shared.players = RealmManager.shared.allPlayers
         if let lastName = PlayersManager.shared.players.first(where: {$0.name == getLastNameValue()}) {
             PlayersManager.shared.currentPlayer = lastName
         }

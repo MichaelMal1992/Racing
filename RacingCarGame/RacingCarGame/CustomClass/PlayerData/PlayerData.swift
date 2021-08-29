@@ -6,22 +6,23 @@
 //
 
 import UIKit
+import RealmSwift
 
-class PlayerData: Codable {
+class PlayerData: Object {
 
-    var name = "Player"
-    var date = "00.00.0000, 00:00"
-    var scores = 0
-    var skins = Skins()
-    var isStartAccselerometr = false
-    var stepFrameSpeed: CGFloat = 5
-    var volumeMusic: Float = 1
-    var systemVolume: Float = 1
+    @Persisted var name: String = "Player"
+    @Persisted var date: String = "00.00.0000, 00:00"
+    @Persisted var scores: Int = 0
+    @Persisted var skins: Skins? = Skins()
+    @Persisted var isStartAccselerometr: Bool = false
+    @Persisted var stepFrameSpeed: Float = 5
+    @Persisted var volumeMusic: Float = 1
+    @Persisted var systemVolume: Float = 1
 }
 
-class Skins: Codable {
+class Skins: Object {
 
-    var oncomingCars = SkinCars.shared.arrayOncomingCars.randomElement() ?? ""
-    var passingCars = SkinCars.shared.arrayPassingCars.randomElement() ?? ""
-    var playerCar = SkinCars.shared.arrayPlayerCars.randomElement() ?? ""
+    @Persisted var oncomingCars = SkinCars.shared.arrayOncomingCars.randomElement()
+    @Persisted var passingCars = SkinCars.shared.arrayPassingCars.randomElement()
+    @Persisted var playerCar = SkinCars.shared.arrayPlayerCars.randomElement()
 }

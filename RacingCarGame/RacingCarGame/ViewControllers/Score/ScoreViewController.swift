@@ -21,7 +21,7 @@ class ScoreViewController: UIViewController {
         setupLabels()
         setupButtons()
         scoresTableView.dataSource = self
-        PlayersManager.shared.players = PlayersManager.shared.players.sorted(by: {$0.scores > $1.scores})
+        PlayersManager.shared.players = PlayersManager.shared.players.sorted(by: {$0.scores > $1.scores })
         let nib = UINib(nibName: String(describing: PlayersScoresTableViewCell.self), bundle: nil)
         scoresTableView.register(nib, forCellReuseIdentifier: String(describing: PlayersScoresTableViewCell.self))
     }
@@ -57,7 +57,7 @@ class ScoreViewController: UIViewController {
         PlayersManager.shared.currentPlayer.scores = PlayerData().scores
         PlayersManager.shared.currentPlayer.date = PlayerData().date
         PlayersManager.shared.players.removeAll()
-        self.setDataValue(self.encodingData(PlayersManager.shared.players))
+        RealmManager.shared.deleteAll()
     }
     let actionAlertCancel = UIAlertAction(title: "Cancel", style: .cancel)
     alert.addAction(actionAlertContinue)
@@ -80,7 +80,7 @@ class ScoreViewController: UIViewController {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.volumeMusic
+                player.volume = PlayersManager.shared.currentPlayer.volumeMusic 
                 player.play()
                 Sound.scores = player
             } catch {
@@ -111,7 +111,7 @@ extension ScoreViewController: UITableViewDataSource {
         cell.numberLabel.text = String(indexPath.row + 1)
         cell.dateLabel.text = PlayersManager.shared.players[indexPath.row].date
         cell.nameLabel.text = PlayersManager.shared.players[indexPath.row].name
-        cell.scoreLabel.text = String(PlayersManager.shared.players[indexPath.row].scores)
+        cell.scoreLabel.text = String(PlayersManager.shared.players[indexPath.row].scores )
         configurationLabel(cell.numberLabel, 30)
         configurationLabel(cell.nameLabel, 30)
         configurationLabel(cell.scoreLabel, 30)

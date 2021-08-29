@@ -117,8 +117,9 @@ class StartGameViewController: UIViewController {
 
     private func setupPlayerCarImageView() {
         let array = [thirdRoadLineView.center.x - widthCars / 2, fourthRoadLineView.center.x - widthCars / 2]
+        let skin = PlayersManager.shared.currentPlayer.skins?.playerCar ?? ""
         configurationImageView(playerCarImageView,
-                               UIImage(named: PlayersManager.shared.currentPlayer.skins.playerCar) ?? UIImage(),
+                               UIImage(named: skin) ?? UIImage(),
                                CGRect(x: array.randomElement() ?? 0,
                                       y: view.frame.maxY - heightCars - 20,
                                       width: widthCars,
@@ -127,8 +128,9 @@ class StartGameViewController: UIViewController {
     }
 
     private func setupCarOnFirstLineRoadImageView() {
+        let skin = PlayersManager.shared.currentPlayer.skins?.oncomingCars ?? ""
         configurationImageView(carOnFirstLineRoadImageView,
-                               UIImage(named: PlayersManager.shared.currentPlayer.skins.oncomingCars) ?? UIImage(),
+                               UIImage(named: skin) ?? UIImage(),
                                CGRect(x: firstRoadLineView.center.x - widthCars / 2,
                                       y: -(heightCars * CGFloat(Int.random(in: 1...2))),
                                       width: widthCars,
@@ -137,8 +139,9 @@ class StartGameViewController: UIViewController {
     }
 
     private func setupCarOnSecondLineRoadImageView() {
+        let skin = PlayersManager.shared.currentPlayer.skins?.oncomingCars ?? ""
         configurationImageView(carOnSecondLineRoadImageView,
-                               UIImage(named: PlayersManager.shared.currentPlayer.skins.oncomingCars) ?? UIImage(),
+                               UIImage(named: skin) ?? UIImage(),
                                CGRect(x: secondRoadLineView.center.x - widthCars / 2,
                                       y: -(heightCars * CGFloat(Int.random(in: 3...4))),
                                       width: widthCars,
@@ -147,8 +150,9 @@ class StartGameViewController: UIViewController {
     }
 
     private func setupCarOnThirdLineRoadImageView() {
+        let skin = PlayersManager.shared.currentPlayer.skins?.passingCars ?? ""
         configurationImageView(carOnThirdLineRoadImageView,
-                               UIImage(named: PlayersManager.shared.currentPlayer.skins.passingCars) ?? UIImage(),
+                               UIImage(named: skin) ?? UIImage(),
                                CGRect(x: thirdRoadLineView.center.x - widthCars / 2,
                                       y: -(heightCars * CGFloat(Int.random(in: 5...6))),
                                       width: widthCars,
@@ -157,8 +161,9 @@ class StartGameViewController: UIViewController {
     }
 
     private func setupCarOnFourthLineRoadImageView() {
+        let skin = PlayersManager.shared.currentPlayer.skins?.passingCars ?? ""
         configurationImageView(carOnFourthLineRoadImageView,
-                               UIImage(named: PlayersManager.shared.currentPlayer.skins.passingCars) ?? UIImage(),
+                               UIImage(named: skin) ?? UIImage(),
                                CGRect(x: fourthRoadLineView.center.x - widthCars / 2,
                                       y: -(heightCars * CGFloat(Int.random(in: 7...8))),
                                       width: widthCars,
@@ -180,11 +185,13 @@ class StartGameViewController: UIViewController {
     private func setupTextGameOverLabel() {
         let origin = CGPoint(x: view.center.x - (textGameOverLabel.frame.width / 2), y: 100)
         let size = CGSize(width: mainContainerView.frame.width, height: 200)
-        textGameOverLabel.frame.origin = origin
         textGameOverLabel.frame.size = size
+        textGameOverLabel.frame.origin = origin
+        textGameOverLabel.textAlignment = .center
         textGameOverLabel.text = "GAME OVER!"
         configurationLabel(textGameOverLabel, 40)
         textGameOverLabel.isHidden = true
+        view.addSubview(textGameOverLabel)
     }
 
     private func setupLabels() {
@@ -235,8 +242,8 @@ class StartGameViewController: UIViewController {
 
     private func animateRoad() {
         UIView.animate(withDuration: 0, delay: 0, options: [.curveLinear]) {
-            self.roadImageView.frame.origin.y += PlayersManager.shared.currentPlayer.stepFrameSpeed
-            self.secondRoadImageView.frame.origin.y += PlayersManager.shared.currentPlayer.stepFrameSpeed
+            self.roadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed)
+            self.secondRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed)
             if self.roadImageView.frame.origin.y >= self.view.frame.height {
                 self.setupRoadsImageView()
             }
@@ -265,8 +272,8 @@ class StartGameViewController: UIViewController {
 
     private func animateOncomingCars() {
         UIView.animate(withDuration: 0, delay: 0, options: [.curveLinear], animations: {
-            self.carOnFirstLineRoadImageView.frame.origin.y += PlayersManager.shared.currentPlayer.stepFrameSpeed / 1.5
-            self.carOnSecondLineRoadImageView.frame.origin.y += PlayersManager.shared.currentPlayer.stepFrameSpeed / 1.5
+            self.carOnFirstLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 1.5)
+            self.carOnSecondLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 1.5)
             if self.carOnFirstLineRoadImageView.frame.origin.y >= self.view.frame.maxY {
                 self.score += 1
                 self.setupCarOnFirstLineRoadImageView()
@@ -296,8 +303,8 @@ class StartGameViewController: UIViewController {
 
     private func animatePassingCars() {
         UIView.animate(withDuration: 0, delay: 0, options: [.curveLinear], animations: {
-            self.carOnThirdLineRoadImageView.frame.origin.y += PlayersManager.shared.currentPlayer.stepFrameSpeed / 3
-            self.carOnFourthLineRoadImageView.frame.origin.y += PlayersManager.shared.currentPlayer.stepFrameSpeed / 3
+            self.carOnThirdLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 3)
+            self.carOnFourthLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 3)
             if self.carOnThirdLineRoadImageView.frame.origin.y >= self.view.frame.maxY {
                 self.score += 1
                 self.setupCarOnThirdLineRoadImageView()
@@ -446,9 +453,10 @@ class StartGameViewController: UIViewController {
         let currentPlayer = PlayersManager.shared.currentPlayer
         if let player = players.first(where: {$0.name == currentPlayer.name}) {
             if score > player.scores {
-                player.scores = score
-                player.date = getCurentTime()
-                setDataValue(encodingData(PlayersManager.shared.players))
+                RealmManager.shared.write {
+                    player.scores = self.score
+                    player.date = self.getCurentTime()
+                }
             } else {
                 return
             }
@@ -456,7 +464,7 @@ class StartGameViewController: UIViewController {
             PlayersManager.shared.currentPlayer.scores = score
             PlayersManager.shared.currentPlayer.date = getCurentTime()
             PlayersManager.shared.players.append(PlayersManager.shared.currentPlayer)
-            setDataValue(encodingData(PlayersManager.shared.players))
+            RealmManager.shared.add(PlayersManager.shared.currentPlayer)
         }
     }
 

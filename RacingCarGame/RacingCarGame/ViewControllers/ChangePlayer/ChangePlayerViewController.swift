@@ -55,10 +55,10 @@ class ChangePlayerViewController: UIViewController {
     @objc private func searchTextFieldDidChange() {
         if let text = searchTextField.text {
             if text.isEmpty == false {
-                let players = decodingData(getDataValue())
+                let players = RealmManager.shared.allPlayers
                 PlayersManager.shared.players = players.filter {$0.name.lowercased().contains(text.lowercased())}
             } else {
-                PlayersManager.shared.players = decodingData(getDataValue())
+                PlayersManager.shared.players = RealmManager.shared.allPlayers
             }
         }
         listPlayersTableView.reloadData()
@@ -93,7 +93,7 @@ extension ChangePlayerViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        PlayersManager.shared.players = decodingData(getDataValue())
+        PlayersManager.shared.players = RealmManager.shared.allPlayers
         listPlayersTableView.reloadData()
         return true
     }

@@ -24,10 +24,14 @@ class NotificationsManager {
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.timeInterval, repeats: true)
                 let request = UNNotificationRequest(identifier: self.identifier, content: content, trigger: trigger)
                 self.notificationCenter.add(request) { (error) in
-                    print(error?.localizedDescription)
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
                 }
             } else {
-                print(error?.localizedDescription)
+                if let error = error {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
