@@ -43,14 +43,25 @@ class RealmManager {
     func write(_ completion: () -> Void) {
         do {
             try realm?.write {
-            completion()
+                completion()
            }
         } catch {
             print(error.localizedDescription)
         }
     }
 
+    var currentPlayer: PlayerData? {
+        let currentName = UserDefaults.getCurrentName()
+        return realm?.objects(PlayerData.self).first(where: { $0.name == currentName })
+    }
+
     func deleteAll() {
-        realm?.deleteAll()
+        do {
+            try realm?.write {
+                realm?.deleteAll()
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

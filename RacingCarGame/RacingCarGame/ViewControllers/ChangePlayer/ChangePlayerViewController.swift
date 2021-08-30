@@ -105,7 +105,9 @@ extension ChangePlayerViewController: UITextFieldDelegate {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.volumeMusic
+                if let currentPlayer = RealmManager.shared.currentPlayer {
+                    player.volume = currentPlayer.volumeMusic
+                }
                 player.play()
                 Sound.changePlayer = player
             } catch {
@@ -146,8 +148,7 @@ extension ChangePlayerViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        PlayersManager.shared.currentPlayer = PlayersManager.shared.players[indexPath.row]
-        setLastNameValue()
+        UserDefaults.setCurrentName(PlayersManager.shared.players[indexPath.row].name)
         navigationController?.popViewController(animated: true)
     }
 }

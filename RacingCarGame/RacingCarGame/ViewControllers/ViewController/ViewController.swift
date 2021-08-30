@@ -26,10 +26,8 @@ class ViewController: UIViewController {
         super .viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         PlayersManager.shared.players = RealmManager.shared.allPlayers
-        if getLastNameValue().isEmpty {
+        if PlayersManager.shared.players.isEmpty {
             createAlertWithTextField()
-        } else {
-            loadingUserDefaults()
         }
         playMenuMusic()
     }
@@ -52,19 +50,14 @@ class ViewController: UIViewController {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.volumeMusic 
+                if let currentPlayer = RealmManager.shared.currentPlayer {
+                    player.volume = currentPlayer.volumeMusic
+                }
                 player.play()
                 Sound.menu = player
             } catch {
                 print(error.localizedDescription)
             }
-        }
-    }
-
-    private func loadingUserDefaults() {
-        PlayersManager.shared.players = RealmManager.shared.allPlayers
-        if let lastName = PlayersManager.shared.players.first(where: {$0.name == getLastNameValue()}) {
-            PlayersManager.shared.currentPlayer = lastName
         }
     }
 

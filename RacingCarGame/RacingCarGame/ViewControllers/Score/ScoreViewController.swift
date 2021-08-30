@@ -54,10 +54,9 @@ class ScoreViewController: UIViewController {
     let alert = UIAlertController(title: "Do you want to remove all results?", message: nil, preferredStyle: .alert)
     let actionAlertContinue = UIAlertAction(title: "Continue", style: .default) { (_) in
         self.navigationController?.popToRootViewController(animated: false)
-        PlayersManager.shared.currentPlayer.scores = PlayerData().scores
-        PlayersManager.shared.currentPlayer.date = PlayerData().date
-        PlayersManager.shared.players.removeAll()
+        UserDefaults.setCurrentName("")
         RealmManager.shared.deleteAll()
+        PlayersManager.shared.players.removeAll()
     }
     let actionAlertCancel = UIAlertAction(title: "Cancel", style: .cancel)
     alert.addAction(actionAlertContinue)
@@ -75,12 +74,13 @@ class ScoreViewController: UIViewController {
 
     private func playScoresMusic() {
         let urlArray = [Bundle.main.url(forResource: "menuMusic3", withExtension: "mp3")]
-        if let url = urlArray[0] {
+        if let url = urlArray[0],
+           let currentPlayer = RealmManager.shared.currentPlayer {
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.volumeMusic 
+                player.volume = currentPlayer.volumeMusic
                 player.play()
                 Sound.scores = player
             } catch {

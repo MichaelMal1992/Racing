@@ -22,6 +22,7 @@
 		8440210126B634E700E07DB7 /* gameMusic5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8440210026B634E700E07DB7 /* gameMusic5.mp3 */; };
 		8440210326B639BB00E07DB7 /* gameOverMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8440210226B639BB00E07DB7 /* gameOverMusic.mp3 */; };
 		8440210626B6464D00E07DB7 /* menuMusic7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8440210526B6464D00E07DB7 /* menuMusic7.mp3 */; };
+		8448440A26DD2A8100BBBD0B /* CurrentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448440926DD2A8100BBBD0B /* CurrentSettings.swift */; };
 		844AD0A426B693BF008A217F /* gameMusic6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD09726B693BF008A217F /* gameMusic6.mp3 */; };
 		844AD0AD26B6973F008A217F /* carsCrash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0AC26B6973F008A217F /* carsCrash.mp3 */; };
 		844AD0BB26B6A3C7008A217F /* speedRushCar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0BA26B6A3C7008A217F /* speedRushCar.mp3 */; };
@@ -64,7 +65,7 @@
 		84EC82A12662D0AA00CC593D /* notacumulus.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84EC82A02662D0AA00CC593D /* notacumulus.ttf */; };
 		84F3CB06266A9C5600901A26 /* SkinCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3CB05266A9C5600901A26 /* SkinCars.swift */; };
 		84FA1E1B267E14B100DDFA5B /* UIViewController+CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA1E1A267E14B100DDFA5B /* UIViewController+CurrentTime.swift */; };
-		84FA1E1D267F9D9400DDFA5B /* UIViewController+CodableData+DataValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA1E1C267F9D9400DDFA5B /* UIViewController+CodableData+DataValue.swift */; };
+		84FA1E1D267F9D9400DDFA5B /* UserDefaults+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA1E1C267F9D9400DDFA5B /* UserDefaults+Value.swift */; };
 		97C2C990682112C67930452C /* Pods_RacingCarGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC09F0FCD1B49C29096B1E68 /* Pods_RacingCarGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		8440210026B634E700E07DB7 /* gameMusic5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic5.mp3; sourceTree = "<group>"; };
 		8440210226B639BB00E07DB7 /* gameOverMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOverMusic.mp3; sourceTree = "<group>"; };
 		8440210526B6464D00E07DB7 /* menuMusic7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic7.mp3; sourceTree = "<group>"; };
+		8448440926DD2A8100BBBD0B /* CurrentSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSettings.swift; sourceTree = "<group>"; };
 		844AD09726B693BF008A217F /* gameMusic6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic6.mp3; sourceTree = "<group>"; };
 		844AD0AC26B6973F008A217F /* carsCrash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carsCrash.mp3; sourceTree = "<group>"; };
 		844AD0BA26B6A3C7008A217F /* speedRushCar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = speedRushCar.mp3; sourceTree = "<group>"; };
@@ -128,7 +130,7 @@
 		84EC82A02662D0AA00CC593D /* notacumulus.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notacumulus.ttf; sourceTree = "<group>"; };
 		84F3CB05266A9C5600901A26 /* SkinCars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCars.swift; sourceTree = "<group>"; };
 		84FA1E1A267E14B100DDFA5B /* UIViewController+CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+CurrentTime.swift"; sourceTree = "<group>"; };
-		84FA1E1C267F9D9400DDFA5B /* UIViewController+CodableData+DataValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+CodableData+DataValue.swift"; sourceTree = "<group>"; };
+		84FA1E1C267F9D9400DDFA5B /* UserDefaults+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Value.swift"; sourceTree = "<group>"; };
 		8F37550570BB89BAD4461E4D /* Pods-RacingCarGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingCarGame.debug.xcconfig"; path = "Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame.debug.xcconfig"; sourceTree = "<group>"; };
 		EC09F0FCD1B49C29096B1E68 /* Pods_RacingCarGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingCarGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CBBFE930680872091C9CFF /* Pods-RacingCarGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingCarGame.release.xcconfig"; path = "Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				84E923BC26AEFA9700C12B79 /* PlayerData.swift */,
+				8448440926DD2A8100BBBD0B /* CurrentSettings.swift */,
 			);
 			path = PlayerData;
 			sourceTree = "<group>";
@@ -391,7 +394,7 @@
 				84AE9CEC267BE27B0015B080 /* UIViewController+ImageView.swift */,
 				84AE9CF0267BF58C0015B080 /* UIViewController+View.swift */,
 				84FA1E1A267E14B100DDFA5B /* UIViewController+CurrentTime.swift */,
-				84FA1E1C267F9D9400DDFA5B /* UIViewController+CodableData+DataValue.swift */,
+				84FA1E1C267F9D9400DDFA5B /* UserDefaults+Value.swift */,
 				84E923C226AF4F8F00C12B79 /* UIViewController+Alert.swift */,
 				84E923D026B30C4700C12B79 /* UIViewController+CreateAlert.swift */,
 			);
@@ -644,7 +647,7 @@
 				84D4B870265667AA004BA330 /* SceneDelegate.swift in Sources */,
 				84225B152670CA2B00D86F14 /* PlayersManager.swift in Sources */,
 				84AE9CED267BE27B0015B080 /* UIViewController+ImageView.swift in Sources */,
-				84FA1E1D267F9D9400DDFA5B /* UIViewController+CodableData+DataValue.swift in Sources */,
+				84FA1E1D267F9D9400DDFA5B /* UserDefaults+Value.swift in Sources */,
 				84FA1E1B267E14B100DDFA5B /* UIViewController+CurrentTime.swift in Sources */,
 				841CA91826C96B8600C90C05 /* StartGameViewController+AVAudioDelegate.swift in Sources */,
 				844020F026B62D2500E07DB7 /* Sound.swift in Sources */,
@@ -661,6 +664,7 @@
 				84EC829B2662B62600CC593D /* LetterColors.swift in Sources */,
 				84D4B8B42659A18E004BA330 /* DirectionMove.swift in Sources */,
 				84AE9CF1267BF58C0015B080 /* UIViewController+View.swift in Sources */,
+				8448440A26DD2A8100BBBD0B /* CurrentSettings.swift in Sources */,
 				84E923D126B30C4800C12B79 /* UIViewController+CreateAlert.swift in Sources */,
 				84D4B88926567F51004BA330 /* ScoreViewController.swift in Sources */,
 				84E923C326AF4F8F00C12B79 /* UIViewController+Alert.swift in Sources */,

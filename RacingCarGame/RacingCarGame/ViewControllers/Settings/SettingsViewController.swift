@@ -7,11 +7,10 @@
 
 import UIKit
 import AVKit
-import RealmSwift
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var screenImageView: UIImageView!
+    @IBOutlet weak private var screenImageView: UIImageView!
     @IBOutlet weak private var passingCarsView: UIView!
     @IBOutlet weak private var passingCarsImageView: UIImageView!
     @IBOutlet weak private var oncomingCarsView: UIView!
@@ -56,92 +55,106 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak private var systemVolumeSlider: UISlider!
     private var count = 0
     private var isDidChoose = false
+    private var currentPlayerSettings: CurrentSettings?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         widthCancelButtonConstraint.constant = 0
-        hideKeyboardOnTap()
         setupButtons()
         setupLabels()
         setupTextField()
-        playSettingsMusic()
         playTestSystemMusic()
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        if let current = RealmManager.shared.currentPlayer {
+            currentPlayerSettings = CurrentSettings(name: current.name,
+                                                    accselerometr: current.isStartAccselerometr,
+                                                    speed: current.stepFrameSpeed,
+                                                    volumeMus: current.volumeMusic,
+                                                    volumeSys: current.systemVolume,
+                                                    oncoming: current.skins?.oncomingCars ?? "",
+                                                    passing: current.skins?.passingCars ?? "",
+                                                    player: current.skins?.playerCar ?? "")
+        }
         PlayersManager.shared.players = RealmManager.shared.allPlayers
-        namePlayerLabel.text = getLastNameValue()
+        namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
         controlStateSwitch()
         setupSliders()
+        playSettingsMusic()
         Sound.settings.play()
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         Sound.settings.stop()
+        Sound.testSystem.stop()
+        currentPlayerSettings = nil
     }
 
     @IBAction private func speedSliderPressed(_ sender: UISlider) {
-        valueOfSpeedLabel.text = String(Int(sender.value) * 10)
-        RealmManager.shared.write {
-            PlayersManager.shared.currentPlayer.stepFrameSpeed = Float(CGFloat(Int(sender.value)))
-        }
-//        PlayersManager.shared.currentPlayer.stepFrameSpeed = Float(CGFloat(Int(sender.value)))
+        currentPlayerSettings?.speed = Float(CGFloat(sender.value))
+        showStatusSpeed(label: valueOfSpeedLabel, value: sender.value)
     }
 
     @IBAction private func systemVolumeSliderPressed(_ sender: UISlider) {
-        PlayersManager.shared.currentPlayer.systemVolume = sender.value
-        Sound.testSystem.volume = PlayersManager.shared.currentPlayer.systemVolume
-        showStatusVolume(label: valueOfSystemVolumeLabel, slider: sender)
+        currentPlayerSettings?.volumeSys = sender.value
+        Sound.testSystem.volume = sender.value
+        showStatusVolume(label: valueOfSystemVolumeLabel, value: sender.value)
         Sound.testSystem.play()
     }
 
     @IBAction private func musicVolumeSliderPressed(_ sender: UISlider) {
-        PlayersManager.shared.currentPlayer.volumeMusic = sender.value
-        Sound.settings.volume = PlayersManager.shared.currentPlayer.volumeMusic
-        showStatusVolume(label: valueOfMusicVolumeLabel, slider: sender)
+        currentPlayerSettings?.volumeMus = sender.value
+        Sound.settings.volume = sender.value
+        showStatusVolume(label: valueOfMusicVolumeLabel, value: sender.value)
     }
 
     @IBAction private func cancelAddNameButtonPressed(_ sender: UIButton) {
-        namePlayerLabel.text = getLastNameValue()
+        namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
         addNameTextField.text?.removeAll()
         addNameTextField.resignFirstResponder()
         widthCancelButtonConstraint.constant = 0
     }
 
     @IBAction private func changePlayerButtonPressed(_ sender: UIButton) {
-        navigationController?.pushViewController(FactoryViewControllers.shared.creat(String(describing: ChangePlayerViewController.self)), animated: true)
+        let name = String(describing: ChangePlayerViewController.self)
+        navigationController?.pushViewController(FactoryViewControllers.shared.creat(name), animated: true)
     }
 
     @IBAction private func accelerometerSwitchPressed(_ sender: UISwitch) {
         if sender.isOn {
-            PlayersManager.shared.currentPlayer.isStartAccselerometr = true
+            currentPlayerSettings?.accselerometr = true
         } else {
-            PlayersManager.shared.currentPlayer.isStartAccselerometr = false
+            currentPlayerSettings?.accselerometr = false
         }
     }
 
     @IBAction private func choosePassingCarsButtonPressed(_ sender: UIButton) {
         isDidChoose = false
-        chooseCar(PlayersManager.shared.currentPlayer.skins?.passingCars, passingCarsImageView)
+        chooseCar(RealmManager.shared.currentPlayer?.skins?.passingCars,
+                  passingCarsImageView,
+                  passingCarsView,
+                  passingCarsLeadingConstraint)
     }
 
     @IBAction private func chooseOncomingCarsButtonPressed(_ sender: UIButton) {
         isDidChoose = false
-        chooseCar(PlayersManager.shared.currentPlayer.skins?.oncomingCars, oncomingCarsImageView)
+        chooseCar(RealmManager.shared.currentPlayer?.skins?.oncomingCars,
+                  oncomingCarsImageView,
+                  oncomingCarsView,
+                  oncomingCarsLeadingConstraint)
     }
 
     @IBAction private func choosePlayerCar(_ sender: UIButton) {
         isDidChoose = false
-        chooseCar(PlayersManager.shared.currentPlayer.skins?.playerCar, playerCarImageView)
+        chooseCar(RealmManager.shared.currentPlayer?.skins?.playerCar,
+                  playerCarImageView,
+                  playerCarView,
+                  playerCarLeadingConstraint)
     }
 
     @IBAction private func backButtonPressed(_ sender: UIButton) {
@@ -149,38 +162,47 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction private func saveButtonPressed(_ sender: UIButton) {
+        guard let currentPlayer = RealmManager.shared.currentPlayer,
+              let playerSettings = currentPlayerSettings else {
+            return
+        }
         if addNameTextField.isFirstResponder == true {
             createAlert("Complete name input")
         } else {
-            let realm = try? Realm()
-            if let player = realm?.objects(PlayerData.self).filter("name == '\(PlayersManager.shared.currentPlayer.name)'").first {
-//                try? realm?.write {
-//                    player.skins = PlayersManager.shared.currentPlayer.skins
-//                    player.isStartAccselerometr = PlayersManager.shared.currentPlayer.isStartAccselerometr
-//                    player.stepFrameSpeed = PlayersManager.shared.currentPlayer.stepFrameSpeed
-//                    player.volumeMusic = PlayersManager.shared.currentPlayer.volumeMusic
-//                    player.systemVolume = PlayersManager.shared.currentPlayer.systemVolume
-//                }
-//            if let player = PlayersManager.shared.players.first(where: {$0.name == PlayersManager.shared.currentPlayer.name}) {
-//                    player.skins = PlayersManager.shared.currentPlayer.skins
-//                    player.isStartAccselerometr = PlayersManager.shared.currentPlayer.isStartAccselerometr
-//                    player.stepFrameSpeed = PlayersManager.shared.currentPlayer.stepFrameSpeed
-//                    player.volumeMusic = PlayersManager.shared.currentPlayer.volumeMusic
-//                    player.systemVolume = PlayersManager.shared.currentPlayer.systemVolume
-                setLastNameValue()
+            if playerSettings.name == currentPlayer.name {
+                RealmManager.shared.write {
+                    currentPlayer.skins?.oncomingCars = playerSettings.oncoming
+                    currentPlayer.skins?.passingCars = playerSettings.passing
+                    currentPlayer.skins?.playerCar = playerSettings.player
+                    currentPlayer.isStartAccselerometr = playerSettings.accselerometr
+                    currentPlayer.stepFrameSpeed = playerSettings.speed
+                    currentPlayer.volumeMusic = playerSettings.volumeMus
+                    currentPlayer.systemVolume = playerSettings.volumeSys
+                }
                 createAlert("New settings saved successfully")
             } else {
-                PlayersManager.shared.players.append(PlayersManager.shared.currentPlayer)
-                RealmManager.shared.add(PlayersManager.shared.currentPlayer)
-                setLastNameValue()
-                createAlert("\(PlayersManager.shared.currentPlayer.name) was be created")
+                let newPlayer = PlayerData()
+                RealmManager.shared.write {
+                    newPlayer.name = playerSettings.name
+                    newPlayer.skins?.oncomingCars = playerSettings.oncoming
+                    newPlayer.skins?.passingCars = playerSettings.passing
+                    newPlayer.skins?.playerCar = playerSettings.player
+                    newPlayer.isStartAccselerometr = playerSettings.accselerometr
+                    newPlayer.stepFrameSpeed = playerSettings.speed
+                    newPlayer.volumeMusic = playerSettings.volumeMus
+                    newPlayer.systemVolume = playerSettings.volumeSys
+                }
+                RealmManager.shared.add(newPlayer)
+                UserDefaults.setCurrentName(newPlayer.name)
+                createAlert("Player - \(newPlayer.name) was be created")
             }
         }
     }
 
     @IBAction private func okPassingCarsButtonPressed(_ sender: UIButton) {
+        animatingSelected(passingCarsLeadingConstraint)
         if isDidChoose {
-            PlayersManager.shared.currentPlayer.skins?.passingCars = selected(SkinCars.shared.arrayPassingCars)
+            currentPlayerSettings?.passing = SkinCars.shared.arrayPassingCars[count]
         } else {
             return
         }
@@ -197,8 +219,9 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction private func okOncomingCarsButtonPressed(_ sender: UIButton) {
+        animatingSelected(oncomingCarsLeadingConstraint)
         if isDidChoose {
-            PlayersManager.shared.currentPlayer.skins?.oncomingCars = selected(SkinCars.shared.arrayOncomingCars)
+            currentPlayerSettings?.oncoming = SkinCars.shared.arrayOncomingCars[count]
         } else {
             return
         }
@@ -215,8 +238,9 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction private func okPlayerCarButtonPressed(_ sender: UIButton) {
+        animatingSelected(playerCarLeadingConstraint)
         if isDidChoose {
-            PlayersManager.shared.currentPlayer.skins?.playerCar = selected(SkinCars.shared.arrayPlayerCars)
+            currentPlayerSettings?.player = SkinCars.shared.arrayPlayerCars[count]
         } else {
             return
         }
@@ -232,14 +256,17 @@ class SettingsViewController: UIViewController {
         next(SkinCars.shared.arrayPlayerCars, playerCarImageView)
     }
 
-    private func chooseCar(_ skin: String?, _ imageView: UIImageView) {
+    private func chooseCar(_ skin: String?,
+                           _ imageView: UIImageView,
+                           _ carsView: UIView,
+                           _ constraint: NSLayoutConstraint) {
         count = 0
         imageView.image = UIImage(named: skin ?? "")
-        oncomingCarsLeadingConstraint.constant = view.center.x + oncomingCarsView.frame.width / 2
+        constraint.constant = view.center.x + carsView.frame.width / 2
         UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
             self.view.addSubview(self.backgroundBlurEffectView)
-            self.setupOncomingCarsView()
+            self.view.addSubview(carsView)
             self.backgroundBlurEffectView.alpha = 1
         }
     }
@@ -264,29 +291,34 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    private func selected(_ array: [String]) -> String {
-        playerCarLeadingConstraint.constant = 0
+    private func animatingSelected(_ constraint: NSLayoutConstraint) {
+        constraint.constant = 0
         UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
             self.backgroundBlurEffectView.alpha = 0
         }
-        return array[count]
     }
 
     private func setupSliders() {
-        speedSlider.maximumValue = 20
+        speedSlider.maximumValue = 30
         speedSlider.minimumValue = 1
         musicVolumeSlider.maximumValue = 1
         musicVolumeSlider.minimumValue = 0
         systemVolumeSlider.maximumValue = 1
         systemVolumeSlider.minimumValue = 0
-        speedSlider.setValue(Float(Int(PlayersManager.shared.currentPlayer.stepFrameSpeed)), animated: true)
-        musicVolumeSlider.setValue(PlayersManager.shared.currentPlayer.volumeMusic, animated: true)
-        systemVolumeSlider.setValue(PlayersManager.shared.currentPlayer.systemVolume, animated: true)
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
+        speedSlider.setValue(Float(Int(currentPlayer.stepFrameSpeed)), animated: true)
+        musicVolumeSlider.setValue(currentPlayer.volumeMusic, animated: true)
+        systemVolumeSlider.setValue(currentPlayer.systemVolume, animated: true)
     }
 
     private func controlStateSwitch() {
-        if PlayersManager.shared.currentPlayer.isStartAccselerometr == true {
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
+        if currentPlayer.isStartAccselerometr {
             accelerometerSwitch.setOn(true, animated: true)
         } else {
             accelerometerSwitch.setOn(false, animated: true)
@@ -295,7 +327,10 @@ class SettingsViewController: UIViewController {
 
     private func setupTextField() {
         addNameTextField.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(addNameTextFieldDidChange), name: UITextField.textDidChangeNotification, object: addNameTextField)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(addNameTextFieldDidChange),
+                                               name: UITextField.textDidChangeNotification,
+                                               object: addNameTextField)
     }
 
     @objc private func addNameTextFieldDidChange() {
@@ -306,7 +341,7 @@ class SettingsViewController: UIViewController {
             }
             namePlayerLabel.text = addNameTextField.text
         } else {
-            namePlayerLabel.text = getLastNameValue()
+            namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
         }
     }
 
@@ -337,16 +372,19 @@ class SettingsViewController: UIViewController {
         configurationLabel(speedLabel, 25)
         configurationLabel(musicVolumeLabel, 25)
         configurationLabel(systemVolumeLabel, 25)
-        showStatusVolume(label: valueOfMusicVolumeLabel, slider: musicVolumeSlider)
-        showStatusVolume(label: valueOfSystemVolumeLabel, slider: systemVolumeSlider)
-        valueOfSpeedLabel.text = String(Int(speedSlider.value) * 10)
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
+        showStatusVolume(label: valueOfMusicVolumeLabel, value: currentPlayer.volumeMusic)
+        showStatusVolume(label: valueOfSystemVolumeLabel, value: currentPlayer.systemVolume)
+        showStatusSpeed(label: valueOfSpeedLabel, value: currentPlayer.stepFrameSpeed)
     }
 
-    private func showStatusVolume(label: UILabel, slider: UISlider) {
-        if slider.value == 0 {
+    private func showStatusVolume(label: UILabel, value: Float) {
+        if value == 0 {
             label.text = "Off"
         } else {
-            if slider.value >= 1 {
+            if value >= 1 {
                 label.text = "Max"
             } else {
                 label.text = "On"
@@ -354,26 +392,27 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    private func setupPassingCarsView() {
-        view.addSubview(passingCarsView)
-    }
-
-    private func setupOncomingCarsView() {
-        view.addSubview(oncomingCarsView)
-    }
-
-    private func setupPlayerCarView() {
-        view.addSubview(playerCarView)
+    private func showStatusSpeed(label: UILabel, value: Float) {
+        if value == 1 {
+            label.text = "Min"
+        } else {
+            if value >= 30 {
+                label.text = "Max"
+            } else {
+                label.text = String(Int(value * 10))
+            }
+        }
     }
 
     private func playTestSystemMusic() {
         let urlArray = [Bundle.main.url(forResource: "testSystemMusic", withExtension: "mp3")]
-        if let url = urlArray[0] {
+        if let url = urlArray[0],
+           let currentPlayer = RealmManager.shared.currentPlayer {
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.systemVolume 
+                player.volume = currentPlayer.systemVolume
                 Sound.testSystem = player
             } catch {
                 print(error.localizedDescription)
@@ -383,12 +422,13 @@ class SettingsViewController: UIViewController {
 
     private func playSettingsMusic() {
         let urlArray = [Bundle.main.url(forResource: "menuMusic5", withExtension: "mp3")]
-        if let url = urlArray[0] {
+        if let url = urlArray[0],
+           let currentPlayer = RealmManager.shared.currentPlayer {
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.prepareToPlay()
                 player.delegate = self
-                player.volume = PlayersManager.shared.currentPlayer.volumeMusic
+                player.volume = currentPlayer.volumeMusic
                 Sound.settings = player
             } catch {
                 print(error.localizedDescription)
@@ -417,39 +457,22 @@ extension SettingsViewController: UITextFieldDelegate {
                 createAlert("This name already exists")
                 addNameTextField.text = text
             } else {
-                PlayersManager.shared.currentPlayer = PlayerData()
-                PlayersManager.shared.currentPlayer.name = text
+                currentPlayerSettings?.name = text
+                widthCancelButtonConstraint.constant = 0
                 controlStateSwitch()
                 setupSliders()
             }
         } else {
             createAlert("Enter correct name")
             addNameTextField.text?.removeAll()
-            namePlayerLabel.text = getLastNameValue()
+            namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
             return false
         }
         addNameTextField.resignFirstResponder()
         return true
     }
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         widthCancelButtonConstraint.constant = 60
-    }
-}
-
-extension SettingsViewController: UIGestureRecognizerDelegate {
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-    }
-
-    @objc func handletapGestureRecognizer(_ sender: UITapGestureRecognizer) {
-
-    }
-
-    func hideKeyboardOnTap() {
-        let tapper = UITapGestureRecognizer(target: self, action: #selector(handletapGestureRecognizer(_:)))
-        tapper.delegate = self
-        tapper.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapper)
     }
 }

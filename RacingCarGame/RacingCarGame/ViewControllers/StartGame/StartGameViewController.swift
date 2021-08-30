@@ -48,11 +48,19 @@ class StartGameViewController: UIViewController {
         didSet {
             scoreLabel.text = "Score: \(score)"
             configurationLabel(scoreLabel, 22)
-            PlayersManager.shared.currentPlayer.stepFrameSpeed += 0.05
-            speedometerValueLabel.text = String(format: "%.0f", PlayersManager.shared.currentPlayer.stepFrameSpeed * 10)
+            if let currentPlayer = RealmManager.shared.currentPlayer {
+                RealmManager.shared.write {
+                    currentPlayer.stepFrameSpeed += 0.05
+                }
+                speedometerValueLabel.text = String(format: "%.0f", currentPlayer.stepFrameSpeed * 10)
+            }
         }
     }
-
+    
+//    required init?(coder: NSCoder) {
+//        self.score = 5
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRoadView()
@@ -72,7 +80,9 @@ class StartGameViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        moveWithGiro(PlayersManager.shared.currentPlayer.isStartAccselerometr)
+        if let currentPlayer = RealmManager.shared.currentPlayer {
+            moveWithGiro(currentPlayer.isStartAccselerometr)
+        }
         processingGame = true
         Sound.move.play()
         Sound.trafic.play()
@@ -117,58 +127,68 @@ class StartGameViewController: UIViewController {
 
     private func setupPlayerCarImageView() {
         let array = [thirdRoadLineView.center.x - widthCars / 2, fourthRoadLineView.center.x - widthCars / 2]
-        let skin = PlayersManager.shared.currentPlayer.skins?.playerCar ?? ""
-        configurationImageView(playerCarImageView,
-                               UIImage(named: skin) ?? UIImage(),
-                               CGRect(x: array.randomElement() ?? 0,
-                                      y: view.frame.maxY - heightCars - 20,
-                                      width: widthCars,
-                                      height: heightCars),
-                               nil)
+        if let currentPlayer = RealmManager.shared.currentPlayer {
+            let skin = currentPlayer.skins?.playerCar ?? ""
+            configurationImageView(playerCarImageView,
+                                   UIImage(named: skin) ?? UIImage(),
+                                   CGRect(x: array.randomElement() ?? 0,
+                                          y: view.frame.maxY - heightCars - 20,
+                                          width: widthCars,
+                                          height: heightCars),
+                                   nil)
+        }
     }
 
     private func setupCarOnFirstLineRoadImageView() {
-        let skin = PlayersManager.shared.currentPlayer.skins?.oncomingCars ?? ""
-        configurationImageView(carOnFirstLineRoadImageView,
-                               UIImage(named: skin) ?? UIImage(),
-                               CGRect(x: firstRoadLineView.center.x - widthCars / 2,
-                                      y: -(heightCars * CGFloat(Int.random(in: 1...2))),
-                                      width: widthCars,
-                                      height: heightCars),
-                               nil)
+        if let currentPlayer = RealmManager.shared.currentPlayer {
+            let skin = currentPlayer.skins?.oncomingCars ?? ""
+            configurationImageView(carOnFirstLineRoadImageView,
+                                   UIImage(named: skin) ?? UIImage(),
+                                   CGRect(x: firstRoadLineView.center.x - widthCars / 2,
+                                          y: -(heightCars * CGFloat(Int.random(in: 1...2))),
+                                          width: widthCars,
+                                          height: heightCars),
+                                   nil)
+        }
     }
 
     private func setupCarOnSecondLineRoadImageView() {
-        let skin = PlayersManager.shared.currentPlayer.skins?.oncomingCars ?? ""
-        configurationImageView(carOnSecondLineRoadImageView,
-                               UIImage(named: skin) ?? UIImage(),
-                               CGRect(x: secondRoadLineView.center.x - widthCars / 2,
-                                      y: -(heightCars * CGFloat(Int.random(in: 3...4))),
-                                      width: widthCars,
-                                      height: heightCars),
-                               nil)
+        if let currentPlayer = RealmManager.shared.currentPlayer {
+            let skin = currentPlayer.skins?.oncomingCars ?? ""
+            configurationImageView(carOnSecondLineRoadImageView,
+                                   UIImage(named: skin) ?? UIImage(),
+                                   CGRect(x: secondRoadLineView.center.x - widthCars / 2,
+                                          y: -(heightCars * CGFloat(Int.random(in: 3...4))),
+                                          width: widthCars,
+                                          height: heightCars),
+                                   nil)
+        }
     }
 
     private func setupCarOnThirdLineRoadImageView() {
-        let skin = PlayersManager.shared.currentPlayer.skins?.passingCars ?? ""
-        configurationImageView(carOnThirdLineRoadImageView,
-                               UIImage(named: skin) ?? UIImage(),
-                               CGRect(x: thirdRoadLineView.center.x - widthCars / 2,
-                                      y: -(heightCars * CGFloat(Int.random(in: 5...6))),
-                                      width: widthCars,
-                                      height: heightCars),
-                               nil)
+        if let currentPlayer = RealmManager.shared.currentPlayer {
+            let skin = currentPlayer.skins?.passingCars ?? ""
+            configurationImageView(carOnThirdLineRoadImageView,
+                                   UIImage(named: skin) ?? UIImage(),
+                                   CGRect(x: thirdRoadLineView.center.x - widthCars / 2,
+                                          y: -(heightCars * CGFloat(Int.random(in: 5...6))),
+                                          width: widthCars,
+                                          height: heightCars),
+                                   nil)
+        }
     }
 
     private func setupCarOnFourthLineRoadImageView() {
-        let skin = PlayersManager.shared.currentPlayer.skins?.passingCars ?? ""
-        configurationImageView(carOnFourthLineRoadImageView,
-                               UIImage(named: skin) ?? UIImage(),
-                               CGRect(x: fourthRoadLineView.center.x - widthCars / 2,
-                                      y: -(heightCars * CGFloat(Int.random(in: 7...8))),
-                                      width: widthCars,
-                                      height: heightCars),
-                               nil)
+        if let currentPlayer = RealmManager.shared.currentPlayer {
+            let skin = currentPlayer.skins?.passingCars ?? ""
+            configurationImageView(carOnFourthLineRoadImageView,
+                                   UIImage(named: skin) ?? UIImage(),
+                                   CGRect(x: fourthRoadLineView.center.x - widthCars / 2,
+                                          y: -(heightCars * CGFloat(Int.random(in: 7...8))),
+                                          width: widthCars,
+                                          height: heightCars),
+                                   nil)
+        }
     }
 
     private func setupRoadView() {
@@ -195,11 +215,14 @@ class StartGameViewController: UIViewController {
     }
 
     private func setupLabels() {
-        speedometerValueLabel.text = String(format: "%.0f", PlayersManager.shared.currentPlayer.stepFrameSpeed * 10)
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
+        speedometerValueLabel.text = String(format: "%.0f", currentPlayer.stepFrameSpeed * 10)
         setupTextGameOverLabel()
         scoreLabel.text = "Score: \(score)"
-        playerNameLabel.text = PlayersManager.shared.currentPlayer.name
-        bestScoreLabel.text = "Best: \(PlayersManager.shared.currentPlayer.scores)"
+        playerNameLabel.text = currentPlayer.name
+        bestScoreLabel.text = "Best: \(currentPlayer.scores)"
         configurationLabel(scoreLabel, 22)
         configurationLabel(playerNameLabel, 22)
         configurationLabel(bestScoreLabel, 22)
@@ -241,9 +264,12 @@ class StartGameViewController: UIViewController {
     }
 
     private func animateRoad() {
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
         UIView.animate(withDuration: 0, delay: 0, options: [.curveLinear]) {
-            self.roadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed)
-            self.secondRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed)
+            self.roadImageView.frame.origin.y += CGFloat(currentPlayer.stepFrameSpeed)
+            self.secondRoadImageView.frame.origin.y += CGFloat(currentPlayer.stepFrameSpeed)
             if self.roadImageView.frame.origin.y >= self.view.frame.height {
                 self.setupRoadsImageView()
             }
@@ -271,9 +297,12 @@ class StartGameViewController: UIViewController {
     }
 
     private func animateOncomingCars() {
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
         UIView.animate(withDuration: 0, delay: 0, options: [.curveLinear], animations: {
-            self.carOnFirstLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 1.5)
-            self.carOnSecondLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 1.5)
+            self.carOnFirstLineRoadImageView.frame.origin.y += CGFloat(currentPlayer.stepFrameSpeed / 1.5)
+            self.carOnSecondLineRoadImageView.frame.origin.y += CGFloat(currentPlayer.stepFrameSpeed / 1.5)
             if self.carOnFirstLineRoadImageView.frame.origin.y >= self.view.frame.maxY {
                 self.score += 1
                 self.setupCarOnFirstLineRoadImageView()
@@ -302,9 +331,12 @@ class StartGameViewController: UIViewController {
     }
 
     private func animatePassingCars() {
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
         UIView.animate(withDuration: 0, delay: 0, options: [.curveLinear], animations: {
-            self.carOnThirdLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 3)
-            self.carOnFourthLineRoadImageView.frame.origin.y += CGFloat(PlayersManager.shared.currentPlayer.stepFrameSpeed / 3)
+            self.carOnThirdLineRoadImageView.frame.origin.y += CGFloat(currentPlayer.stepFrameSpeed / 3)
+            self.carOnFourthLineRoadImageView.frame.origin.y += CGFloat(currentPlayer.stepFrameSpeed / 3)
             if self.carOnThirdLineRoadImageView.frame.origin.y >= self.view.frame.maxY {
                 self.score += 1
                 self.setupCarOnThirdLineRoadImageView()
@@ -333,11 +365,14 @@ class StartGameViewController: UIViewController {
     }
 
     private func animatePlayerCar(direction: DirectionMove, withDuration: Double) {
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
         switch direction {
         case .left:
             if processingGame == true {
             UIView.animate(withDuration: withDuration, delay: 0, options: [.curveLinear], animations: {
-                if PlayersManager.shared.currentPlayer.isStartAccselerometr {
+                if currentPlayer.isStartAccselerometr {
                     self.playerCarImageView.center.x -= 2
                 } else {
                     Sound.turn.currentTime = 0
@@ -354,7 +389,7 @@ class StartGameViewController: UIViewController {
         case .right:
             if processingGame == true {
             UIView.animate(withDuration: withDuration, delay: 0, options: [.curveLinear], animations: {
-                if PlayersManager.shared.currentPlayer.isStartAccselerometr {
+                if currentPlayer.isStartAccselerometr {
                     self.playerCarImageView.frame.origin.x += 2
                 } else {
                     Sound.turn.currentTime = 0
@@ -371,7 +406,7 @@ class StartGameViewController: UIViewController {
         case .top:
             if processingGame == true {
             UIView.animate(withDuration: withDuration, delay: 0, options: [.curveLinear], animations: {
-                if PlayersManager.shared.currentPlayer.isStartAccselerometr {
+                if currentPlayer.isStartAccselerometr {
                     self.playerCarImageView.center.y -= 2
                 } else {
                     self.playerCarImageView.center.y -= self.heightCars
@@ -386,7 +421,7 @@ class StartGameViewController: UIViewController {
         case .down:
             if processingGame == true {
             UIView.animate(withDuration: withDuration, delay: 0, options: [.curveLinear], animations: {
-                if PlayersManager.shared.currentPlayer.isStartAccselerometr {
+                if currentPlayer.isStartAccselerometr {
                     self.playerCarImageView.center.y += 2
                 } else {
                     self.playerCarImageView.center.y += self.heightCars
@@ -449,22 +484,16 @@ class StartGameViewController: UIViewController {
             navigation.popToRootViewController(animated: false)
             }
         }
-        let players = PlayersManager.shared.players
-        let currentPlayer = PlayersManager.shared.currentPlayer
-        if let player = players.first(where: {$0.name == currentPlayer.name}) {
-            if score > player.scores {
-                RealmManager.shared.write {
-                    player.scores = self.score
-                    player.date = self.getCurentTime()
-                }
-            } else {
-                return
+        guard let currentPlayer = RealmManager.shared.currentPlayer else {
+            return
+        }
+        if score > currentPlayer.scores {
+            RealmManager.shared.write {
+                currentPlayer.scores = score
+                currentPlayer.date = getCurentTime()
             }
         } else {
-            PlayersManager.shared.currentPlayer.scores = score
-            PlayersManager.shared.currentPlayer.date = getCurentTime()
-            PlayersManager.shared.players.append(PlayersManager.shared.currentPlayer)
-            RealmManager.shared.add(PlayersManager.shared.currentPlayer)
+            return
         }
     }
 

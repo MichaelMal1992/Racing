@@ -17,17 +17,20 @@ extension UIViewController {
                                                selector: #selector(addNameTextFieldDidChange),
                                                name: UITextField.textDidChangeNotification,
                                                object: AlertTextField.textField)
-        AlertTextField.textField.text = PlayerData().name
+        AlertTextField.textField.text = "Player"
         alert.addAction(UIAlertAction(title: "Continuet", style: .default, handler: { _ in
             guard let text = AlertTextField.textField.text else {
                 return
             }
                 if text.isEmpty == false, text != text.filter({ $0 == " "}) {
-                    PlayersManager.shared.currentPlayer.name = text
-                    self.setLastNameValue()
+                    let player = PlayerData()
+                    player.name = text
+                    RealmManager.shared.add(player)
+                    UserDefaults.setCurrentName(text)
                 } else {
-                    PlayersManager.shared.currentPlayer.name = PlayerData().name
-                    self.setLastNameValue()
+                    let player = PlayerData()
+                    RealmManager.shared.add(player)
+                    UserDefaults.setCurrentName(player.name)
                 }
         }))
         present(alert, animated: true)
