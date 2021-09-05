@@ -224,6 +224,31 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingsController_icon" translatesAutoresizingMaskIntoConstraints="NO" id="eoB-gK-xAp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTD-Kf-V3e" userLabel="ViewAccelerometr">
+                                <rect key="frame" x="258" y="326" width="36" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70t-6v-HZI" userLabel="Value Of Accelerometr Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="70t-6v-HZI" firstAttribute="leading" secondItem="CTD-Kf-V3e" secondAttribute="leading" id="FCo-ah-Ags"/>
+                                    <constraint firstAttribute="width" secondItem="CTD-Kf-V3e" secondAttribute="height" multiplier="1:1" id="ZHW-bP-P00"/>
+                                    <constraint firstItem="70t-6v-HZI" firstAttribute="top" secondItem="CTD-Kf-V3e" secondAttribute="top" id="ZtZ-jS-SCd"/>
+                                    <constraint firstAttribute="bottom" secondItem="70t-6v-HZI" secondAttribute="bottom" id="gio-43-RRT"/>
+                                    <constraint firstAttribute="trailing" secondItem="70t-6v-HZI" secondAttribute="trailing" id="sXB-ej-6Pv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9d-3q-sPf" userLabel="ViewMusicVolume">
                                 <rect key="frame" x="191" y="443" width="36" height="36"/>
                                 <subviews>
@@ -620,6 +645,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MHh-EP-Xny">
+                                <rect key="frame" x="18" y="408" width="339" height="31"/>
+                                <connections>
+                                    <action selector="systemVolumeSliderPressed:" destination="XaH-Yw-gQQ" eventType="valueChanged" id="17g-ry-LLy"/>
+                                </connections>
+                            </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="N4g-Qt-lnP">
                                 <rect key="frame" x="18" y="484" width="339" height="31"/>
                                 <connections>
@@ -636,12 +667,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MHh-EP-Xny">
-                                <rect key="frame" x="18" y="408" width="339" height="31"/>
-                                <connections>
-                                    <action selector="systemVolumeSliderPressed:" destination="XaH-Yw-gQQ" eventType="valueChanged" id="17g-ry-LLy"/>
-                                </connections>
-                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d13-36-AYj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -695,9 +720,11 @@
                             <constraint firstItem="U85-sa-Omj" firstAttribute="leading" secondItem="xhp-qF-lmv" secondAttribute="leading" constant="20" id="dJp-r5-Scz"/>
                             <constraint firstItem="mnD-Py-zyJ" firstAttribute="leading" secondItem="xhp-qF-lmv" secondAttribute="leading" constant="110" id="dT8-FZ-qyy"/>
                             <constraint firstAttribute="bottom" secondItem="PQj-nL-xLW" secondAttribute="bottom" id="dzu-cO-8ke"/>
+                            <constraint firstItem="CTD-Kf-V3e" firstAttribute="leading" secondItem="uTV-55-Usv" secondAttribute="trailing" constant="10" id="ecD-cS-Tnq"/>
                             <constraint firstItem="rhU-K9-sc5" firstAttribute="centerY" secondItem="jSo-RZ-2Sx" secondAttribute="centerY" id="egC-7a-OAd"/>
                             <constraint firstItem="3R2-2o-qeg" firstAttribute="height" secondItem="rW8-DK-n8e" secondAttribute="height" id="fuU-EJ-Kex"/>
                             <constraint firstItem="hvG-vv-QwA" firstAttribute="height" secondItem="xhp-qF-lmv" secondAttribute="height" multiplier="0.5" id="hA2-lc-nzI"/>
+                            <constraint firstItem="CTD-Kf-V3e" firstAttribute="centerY" secondItem="uTV-55-Usv" secondAttribute="centerY" id="hnw-E9-RuH"/>
                             <constraint firstItem="i4S-1Y-vZy" firstAttribute="leading" secondItem="xhp-qF-lmv" secondAttribute="leading" constant="20" id="hyY-PE-ogY"/>
                             <constraint firstItem="EU6-nn-vhu" firstAttribute="leading" secondItem="i4S-1Y-vZy" secondAttribute="trailing" constant="20" id="iXC-KS-oLa"/>
                             <constraint firstItem="Hyw-zH-LbT" firstAttribute="centerY" secondItem="xOO-rT-DyB" secondAttribute="centerY" id="jbG-Tu-THP"/>
@@ -721,11 +748,17 @@
                             <constraint firstItem="i4S-1Y-vZy" firstAttribute="top" secondItem="EvZ-pJ-LXC" secondAttribute="bottom" constant="5" id="tlc-Zv-BGV"/>
                             <constraint firstItem="M8Q-xo-FT5" firstAttribute="top" secondItem="xhp-qF-lmv" secondAttribute="top" constant="30" id="uKw-ZJ-7tk"/>
                             <constraint firstAttribute="trailing" secondItem="U85-sa-Omj" secondAttribute="trailing" constant="20" id="uRC-f0-Yuo"/>
+                            <constraint firstItem="CTD-Kf-V3e" firstAttribute="height" secondItem="EvZ-pJ-LXC" secondAttribute="height" id="uow-7b-c7k"/>
                             <constraint firstItem="kMb-Va-Crj" firstAttribute="leading" secondItem="xhp-qF-lmv" secondAttribute="leading" constant="110" id="v0b-Wg-oSS"/>
                             <constraint firstItem="xOO-rT-DyB" firstAttribute="height" secondItem="M4m-lQ-EtY" secondAttribute="height" id="wxI-qT-ZzD"/>
                             <constraint firstAttribute="trailing" secondItem="IsV-6a-A4w" secondAttribute="leading" id="xFX-WC-iNK"/>
                             <constraint firstItem="rhU-K9-sc5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jSo-RZ-2Sx" secondAttribute="trailing" constant="5" id="yKQ-tO-riF"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="PQj-nL-xLW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="accelerometerLabel" destination="EvZ-pJ-LXC" id="vko-d3-SqR"/>
@@ -767,6 +800,7 @@
                         <outlet property="speedSlider" destination="U85-sa-Omj" id="2Do-gV-6c8"/>
                         <outlet property="systemVolumeLabel" destination="i4S-1Y-vZy" id="Reh-Fp-5lN"/>
                         <outlet property="systemVolumeSlider" destination="MHh-EP-Xny" id="4DG-zi-h1w"/>
+                        <outlet property="valueOfAccelerometrLabel" destination="70t-6v-HZI" id="tKp-rE-zRT"/>
                         <outlet property="valueOfMusicVolumeLabel" destination="XsG-OY-HU4" id="Vwl-UF-atr"/>
                         <outlet property="valueOfSpeedLabel" destination="rQq-I3-Qsv" id="9vg-Yc-rHd"/>
                         <outlet property="valueOfSystemVolumeLabel" destination="NEo-DW-HhF" id="Top-yh-ZvX"/>

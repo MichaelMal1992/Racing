@@ -66,6 +66,9 @@
 		84F3CB06266A9C5600901A26 /* SkinCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3CB05266A9C5600901A26 /* SkinCars.swift */; };
 		84FA1E1B267E14B100DDFA5B /* UIViewController+CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA1E1A267E14B100DDFA5B /* UIViewController+CurrentTime.swift */; };
 		84FA1E1D267F9D9400DDFA5B /* UserDefaults+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA1E1C267F9D9400DDFA5B /* UserDefaults+Value.swift */; };
+		84FA305226E4F83600C964F4 /* ScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA305126E4F83600C964F4 /* ScoreViewModel.swift */; };
+		84FA305426E4F85400C964F4 /* ScoreViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA305326E4F85400C964F4 /* ScoreViewModelProtocol.swift */; };
+		84FA305626E5040000C964F4 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA305526E5040000C964F4 /* ItemModel.swift */; };
 		97C2C990682112C67930452C /* Pods_RacingCarGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC09F0FCD1B49C29096B1E68 /* Pods_RacingCarGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +134,9 @@
 		84F3CB05266A9C5600901A26 /* SkinCars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCars.swift; sourceTree = "<group>"; };
 		84FA1E1A267E14B100DDFA5B /* UIViewController+CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+CurrentTime.swift"; sourceTree = "<group>"; };
 		84FA1E1C267F9D9400DDFA5B /* UserDefaults+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Value.swift"; sourceTree = "<group>"; };
+		84FA305126E4F83600C964F4 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
+		84FA305326E4F85400C964F4 /* ScoreViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModelProtocol.swift; sourceTree = "<group>"; };
+		84FA305526E5040000C964F4 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		8F37550570BB89BAD4461E4D /* Pods-RacingCarGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingCarGame.debug.xcconfig"; path = "Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame.debug.xcconfig"; sourceTree = "<group>"; };
 		EC09F0FCD1B49C29096B1E68 /* Pods_RacingCarGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingCarGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CBBFE930680872091C9CFF /* Pods-RacingCarGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingCarGame.release.xcconfig"; path = "Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,7 +203,8 @@
 		841CA90526C962FA00C90C05 /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				84D4B88826567F51004BA330 /* ScoreViewController.swift */,
+				84FA305026E4F81E00C964F4 /* ScoreViewModel */,
+				841CA90A26C963D200C90C05 /* PlayersScoresTableViewCell */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -223,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				841CA90926C963C400C90C05 /* PlayerData */,
-				841CA90A26C963D200C90C05 /* PlayersScoresTableViewCell */,
 				841CA90B26C963D600C90C05 /* AlertTextField */,
 				841CA90C26C963D900C90C05 /* LetterColors */,
 				841CA90D26C963DC00C90C05 /* SkinCars */,
@@ -450,6 +456,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		84FA305026E4F81E00C964F4 /* ScoreViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84FA305126E4F83600C964F4 /* ScoreViewModel.swift */,
+				84FA305526E5040000C964F4 /* ItemModel.swift */,
+				84FA305326E4F85400C964F4 /* ScoreViewModelProtocol.swift */,
+				84D4B88826567F51004BA330 /* ScoreViewController.swift */,
+			);
+			path = ScoreViewModel;
+			sourceTree = "<group>";
+		};
 		A82DD77934D352A519B790C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,6 +654,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FA305626E5040000C964F4 /* ItemModel.swift in Sources */,
 				841CA91A26C96E4800C90C05 /* NotificationsManager.swift in Sources */,
 				841CA92126C9832B00C90C05 /* StartGameViewController+PlayMusic.swift in Sources */,
 				84D4B890265680EF004BA330 /* FactoryViewControllers.swift in Sources */,
@@ -658,8 +676,10 @@
 				84F3CB06266A9C5600901A26 /* SkinCars.swift in Sources */,
 				84E923CB26B0B55300C12B79 /* ChangePlayerViewController.swift in Sources */,
 				84AE9CE5267BBF580015B080 /* UIViewController+ConfigurationLabel.swift in Sources */,
+				84FA305426E4F85400C964F4 /* ScoreViewModelProtocol.swift in Sources */,
 				841CA91F26C97E9800C90C05 /* ParalaxManager.swift in Sources */,
 				84D4B88626567F43004BA330 /* SettingsViewController.swift in Sources */,
+				84FA305226E4F83600C964F4 /* ScoreViewModel.swift in Sources */,
 				84D4B8832656780C004BA330 /* StartGameViewController.swift in Sources */,
 				84EC829B2662B62600CC593D /* LetterColors.swift in Sources */,
 				84D4B8B42659A18E004BA330 /* DirectionMove.swift in Sources */,

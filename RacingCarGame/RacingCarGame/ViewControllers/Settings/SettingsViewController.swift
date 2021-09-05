@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak private var backPassingCarButton: UIButton!
     @IBOutlet weak private var nameTextLabel: UILabel!
     @IBOutlet weak private var accelerometerLabel: UILabel!
+    @IBOutlet weak var valueOfAccelerometrLabel: UILabel!
     @IBOutlet weak private var passingCarsLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var oncomingCarsLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var playerCarLeadingConstraint: NSLayoutConstraint!
@@ -131,6 +132,7 @@ class SettingsViewController: UIViewController {
         } else {
             currentPlayerSettings?.accselerometr = false
         }
+        showStatusAccelerometr(label: valueOfAccelerometrLabel, value: sender.isOn)
     }
 
     @IBAction private func choosePassingCarsButtonPressed(_ sender: UIButton) {
@@ -378,6 +380,7 @@ class SettingsViewController: UIViewController {
         showStatusVolume(label: valueOfMusicVolumeLabel, value: currentPlayer.volumeMusic)
         showStatusVolume(label: valueOfSystemVolumeLabel, value: currentPlayer.systemVolume)
         showStatusSpeed(label: valueOfSpeedLabel, value: currentPlayer.stepFrameSpeed)
+        showStatusAccelerometr(label: valueOfAccelerometrLabel, value: currentPlayer.isStartAccselerometr)
     }
 
     private func showStatusVolume(label: UILabel, value: Float) {
@@ -389,6 +392,14 @@ class SettingsViewController: UIViewController {
             } else {
                 label.text = "On"
             }
+        }
+    }
+
+    private func showStatusAccelerometr(label: UILabel, value: Bool) {
+        if value {
+            label.text = "On"
+        } else {
+            label.text = "Off"
         }
     }
 
