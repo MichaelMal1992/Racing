@@ -46,7 +46,7 @@ class StartGameViewController: UIViewController {
     private var isJump = false
     private var score = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
+            scoreLabel.text = "\(LocalizableConstants.LabelText.score) \(score)"
             configurationLabel(scoreLabel, 22)
             if let currentPlayer = RealmManager.shared.currentPlayer {
                 RealmManager.shared.write {
@@ -56,11 +56,7 @@ class StartGameViewController: UIViewController {
             }
         }
     }
-    
-//    required init?(coder: NSCoder) {
-//        self.score = 5
-//    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRoadView()
@@ -208,7 +204,7 @@ class StartGameViewController: UIViewController {
         textGameOverLabel.frame.size = size
         textGameOverLabel.frame.origin = origin
         textGameOverLabel.textAlignment = .center
-        textGameOverLabel.text = "GAME OVER!"
+        textGameOverLabel.text = LocalizableConstants.LabelText.gameOver
         configurationLabel(textGameOverLabel, 40)
         textGameOverLabel.isHidden = true
         view.addSubview(textGameOverLabel)
@@ -220,9 +216,9 @@ class StartGameViewController: UIViewController {
         }
         speedometerValueLabel.text = String(format: "%.0f", currentPlayer.stepFrameSpeed * 10)
         setupTextGameOverLabel()
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "\(LocalizableConstants.LabelText.score) \(score)"
         playerNameLabel.text = currentPlayer.name
-        bestScoreLabel.text = "Best: \(currentPlayer.scores)"
+        bestScoreLabel.text = "\(LocalizableConstants.LabelText.best) \(currentPlayer.scores)"
         configurationLabel(scoreLabel, 22)
         configurationLabel(playerNameLabel, 22)
         configurationLabel(bestScoreLabel, 22)
@@ -234,6 +230,8 @@ class StartGameViewController: UIViewController {
     private func setupButtons() {
         containerForPauseAndMenuView.addSubview(pauseButton)
         containerForPauseAndMenuView.addSubview(menuButton)
+        homeButton.title = LocalizableConstants.ButtonTitle.home
+        exitButton.title = LocalizableConstants.ButtonTitle.exit
         configurationButton(pauseButton, 30)
         configurationButton(menuButton, 30)
         configurationButton(homeButton, 40)

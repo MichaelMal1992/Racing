@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="231.8840579710145" y="646.875"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="RacingCarGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="BYZ-38-t0r" customClass="MenuViewController" customModule="RacingCarGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -754,11 +754,6 @@
                             <constraint firstAttribute="trailing" secondItem="IsV-6a-A4w" secondAttribute="leading" id="xFX-WC-iNK"/>
                             <constraint firstItem="rhU-K9-sc5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jSo-RZ-2Sx" secondAttribute="trailing" constant="5" id="yKQ-tO-riF"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="PQj-nL-xLW"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="accelerometerLabel" destination="EvZ-pJ-LXC" id="vko-d3-SqR"/>

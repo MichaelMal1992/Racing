@@ -20,9 +20,10 @@ class ChangePlayerViewController: UIViewController {
         super.viewDidLoad()
 
         setupSearchTextField()
+        cancelButton.title = LocalizableConstants.ButtonTitle.cancel
         configurationButton(cancelButton, 25)
-        listPlayersTableView.delegate = self
         listPlayersTableView.dataSource = self
+        listPlayersTableView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +57,9 @@ class ChangePlayerViewController: UIViewController {
         if let text = searchTextField.text {
             if text.isEmpty == false {
                 let players = RealmManager.shared.allPlayers
-                PlayersManager.shared.players = players.filter {$0.name.lowercased().contains(text.lowercased())}
+                Players.shared.all = players.filter {$0.name.lowercased().contains(text.lowercased())}
             } else {
-                PlayersManager.shared.players = RealmManager.shared.allPlayers
+                Players.shared.all = RealmManager.shared.allPlayers
             }
         }
         listPlayersTableView.reloadData()
@@ -93,7 +94,7 @@ extension ChangePlayerViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        PlayersManager.shared.players = RealmManager.shared.allPlayers
+        Players.shared.all = RealmManager.shared.allPlayers
         listPlayersTableView.reloadData()
         return true
     }
@@ -127,28 +128,23 @@ extension ChangePlayerViewController: AVAudioPlayerDelegate {
     }
 }
 
-extension ChangePlayerViewController: UITableViewDelegate {
-
-}
-
-extension ChangePlayerViewController: UITableViewDataSource {
+extension ChangePlayerViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PlayersManager.shared.players.count
+        return Players.shared.all.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.backgroundColor = .clear
-        let name = PlayersManager.shared.players[indexPath.row].name
-        let scores = PlayersManager.shared.players[indexPath.row].scores
-        cell.textLabel?.text = "\(name):  \(scores) scores"
+        let name = Players.shared.all[indexPath.row].name
+        cell.textLabel?.text = name
         configurationLabel(cell.textLabel ?? UILabel(), 30)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UserDefaults.setCurrentName(PlayersManager.shared.players[indexPath.row].name)
+        UserDefaults.setCurrentName(Players.shared.all[indexPath.row].name)
         navigationController?.popViewController(animated: true)
     }
 }

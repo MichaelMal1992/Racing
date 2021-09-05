@@ -19,8 +19,8 @@ class NotificationsManager {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {
                 let content = UNMutableNotificationContent()
-                content.title = "Hi, player!"
-                content.body = "You don't played for a long time. Come in to set a new records!"
+                content.title = LocalizableConstants.Notification.title
+                content.body = LocalizableConstants.Notification.body
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: self.timeInterval, repeats: true)
                 let request = UNNotificationRequest(identifier: self.identifier, content: content, trigger: trigger)
                 self.notificationCenter.add(request) { (error) in

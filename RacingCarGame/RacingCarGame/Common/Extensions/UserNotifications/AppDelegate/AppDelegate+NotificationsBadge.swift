@@ -16,7 +16,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         UIApplication.shared.applicationIconBadgeNumber += 1
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         UIApplication.shared.applicationIconBadgeNumber -= 1
     }
 }

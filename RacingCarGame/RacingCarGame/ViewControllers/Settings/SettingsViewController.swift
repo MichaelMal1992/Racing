@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit
-
+// swiftlint:disable type_body_length
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak private var screenImageView: UIImageView!
@@ -80,7 +80,7 @@ class SettingsViewController: UIViewController {
                                                     passing: current.skins?.passingCars ?? "",
                                                     player: current.skins?.playerCar ?? "")
         }
-        PlayersManager.shared.players = RealmManager.shared.allPlayers
+        Players.shared.all = RealmManager.shared.allPlayers
         namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
         controlStateSwitch()
         setupSliders()
@@ -169,7 +169,7 @@ class SettingsViewController: UIViewController {
             return
         }
         if addNameTextField.isFirstResponder == true {
-            createAlert("Complete name input")
+            createAlert(LocalizableConstants.AlertText.complete)
         } else {
             if playerSettings.name == currentPlayer.name {
                 RealmManager.shared.write {
@@ -181,7 +181,7 @@ class SettingsViewController: UIViewController {
                     currentPlayer.volumeMusic = playerSettings.volumeMus
                     currentPlayer.systemVolume = playerSettings.volumeSys
                 }
-                createAlert("New settings saved successfully")
+                createAlert(LocalizableConstants.AlertText.successfull)
             } else {
                 let newPlayer = PlayerData()
                 RealmManager.shared.write {
@@ -196,7 +196,7 @@ class SettingsViewController: UIViewController {
                 }
                 RealmManager.shared.add(newPlayer)
                 UserDefaults.setCurrentName(newPlayer.name)
-                createAlert("Player - \(newPlayer.name) was be created")
+                createAlert("\(LocalizableConstants.AlertText.player) \(newPlayer.name) \(LocalizableConstants.AlertText.created)")
             }
         }
     }
@@ -348,6 +348,21 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupButtons() {
+        saveButton.title = LocalizableConstants.ButtonTitle.save
+        backButton.title = LocalizableConstants.ButtonTitle.back
+        oncomingCarsButton.title = LocalizableConstants.ButtonTitle.oncoming
+        passingCarsButton.title = LocalizableConstants.ButtonTitle.passing
+        playerCarButton.title = LocalizableConstants.ButtonTitle.player
+        changePlayerButton.title = LocalizableConstants.ButtonTitle.change
+        okPlayerCarButton.title = LocalizableConstants.ButtonTitle.okay
+        okPassingCarButton.title = LocalizableConstants.ButtonTitle.okay
+        okOncomingCarsButton.title = LocalizableConstants.ButtonTitle.okay
+        nextPlayerCarButton.title = LocalizableConstants.ButtonTitle.next
+        nextPassingCarButton.title = LocalizableConstants.ButtonTitle.next
+        nextOncomingCarsButton.title = LocalizableConstants.ButtonTitle.next
+        backPlayerCarButton.title = LocalizableConstants.ButtonTitle.back
+        backOncomingCarsButton.title = LocalizableConstants.ButtonTitle.back
+        backPassingCarButton.title = LocalizableConstants.ButtonTitle.back
         configurationButton(saveButton, 25)
         configurationButton(backButton, 25)
         configurationButton(oncomingCarsButton, 20)
@@ -366,6 +381,13 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupLabels() {
+        nameTextLabel.text = LocalizableConstants.LabelText.name
+        accelerometerLabel.text = LocalizableConstants.LabelText.accelerometr
+        createPlayerLabel.text = LocalizableConstants.LabelText.create
+        carsLabel.text = LocalizableConstants.LabelText.cars
+        speedLabel.text = LocalizableConstants.LabelText.speed
+        musicVolumeLabel.text = LocalizableConstants.LabelText.music
+        systemVolumeLabel.text = LocalizableConstants.LabelText.system
         configurationLabel(nameTextLabel, 25)
         configurationLabel(accelerometerLabel, 25)
         configurationLabel(createPlayerLabel, 25)
@@ -385,30 +407,30 @@ class SettingsViewController: UIViewController {
 
     private func showStatusVolume(label: UILabel, value: Float) {
         if value == 0 {
-            label.text = "Off"
+            label.text = LocalizableConstants.Status.off
         } else {
             if value >= 1 {
-                label.text = "Max"
+                label.text = LocalizableConstants.Status.max
             } else {
-                label.text = "On"
+                label.text = LocalizableConstants.Status.on
             }
         }
     }
 
     private func showStatusAccelerometr(label: UILabel, value: Bool) {
         if value {
-            label.text = "On"
+            label.text = LocalizableConstants.Status.on
         } else {
-            label.text = "Off"
+            label.text = LocalizableConstants.Status.off
         }
     }
 
     private func showStatusSpeed(label: UILabel, value: Float) {
         if value == 1 {
-            label.text = "Min"
+            label.text = LocalizableConstants.Status.min
         } else {
             if value >= 30 {
-                label.text = "Max"
+                label.text = LocalizableConstants.Status.max
             } else {
                 label.text = String(Int(value * 10))
             }
@@ -464,8 +486,8 @@ extension SettingsViewController: UITextFieldDelegate {
             return false
         }
         if text.isEmpty == false, text != text.filter({ $0 == " "}) {
-            if PlayersManager.shared.players.first(where: {$0.name == text}) != nil {
-                createAlert("This name already exists")
+            if Players.shared.all.first(where: {$0.name == text}) != nil {
+                createAlert(LocalizableConstants.AlertText.nameExist)
                 addNameTextField.text = text
             } else {
                 currentPlayerSettings?.name = text
@@ -474,7 +496,7 @@ extension SettingsViewController: UITextFieldDelegate {
                 setupSliders()
             }
         } else {
-            createAlert("Enter correct name")
+            createAlert(LocalizableConstants.AlertText.correctName)
             addNameTextField.text?.removeAll()
             namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
             return false

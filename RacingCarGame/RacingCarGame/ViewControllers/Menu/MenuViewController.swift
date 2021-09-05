@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-class ViewController: UIViewController {
+class MenuViewController: UIViewController {
     @IBOutlet weak private var containerForButtonsView: UIView!
     @IBOutlet weak private var startGameButton: UIButton!
     @IBOutlet weak private var settingsButton: UIButton!
@@ -25,8 +25,8 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        PlayersManager.shared.players = RealmManager.shared.allPlayers
-        if PlayersManager.shared.players.isEmpty {
+        Players.shared.all = RealmManager.shared.allPlayers
+        if Players.shared.all.isEmpty {
             createAlertWithTextField()
         }
         playMenuMusic()
@@ -62,6 +62,10 @@ class ViewController: UIViewController {
     }
 
     private func setupButtons() {
+        startGameButton.title = NSLocalizedString("start", comment: "")
+        scoreButton.title = LocalizableConstants.ButtonTitle.score
+        settingsButton.title = LocalizableConstants.ButtonTitle.settings
+        exitButton.title = LocalizableConstants.ButtonTitle.exit
         configurationButton(startGameButton, 40)
         configurationButton(scoreButton, 40)
         configurationButton(settingsButton, 40)
@@ -89,7 +93,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: AVAudioPlayerDelegate {
+extension MenuViewController: AVAudioPlayerDelegate {
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {

@@ -10,7 +10,9 @@ import UIKit
 extension UIViewController {
 
     func createAlertWithTextField() {
-        let alert = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: LocalizableConstants.AlertText.enterName,
+                                      message: nil,
+                                      preferredStyle: .alert)
         alert.addTextField()
         AlertTextField.textField = alert.textFields?.first ?? UITextField()
         NotificationCenter.default.addObserver(self,
@@ -18,7 +20,9 @@ extension UIViewController {
                                                name: UITextField.textDidChangeNotification,
                                                object: AlertTextField.textField)
         AlertTextField.textField.text = "Player"
-        alert.addAction(UIAlertAction(title: "Continuet", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: LocalizableConstants.AlertText.continueOk,
+                                      style: .default,
+                                      handler: { _ in
             guard let text = AlertTextField.textField.text else {
                 return
             }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class CurrentSettings {
 
     var name: String = "Player"
