@@ -62,10 +62,10 @@ class MenuViewController: UIViewController {
     }
 
     private func setupButtons() {
-        startGameButton.title = NSLocalizedString("start", comment: "")
         scoreButton.title = LocalizableConstants.ButtonTitle.score
         settingsButton.title = LocalizableConstants.ButtonTitle.settings
         exitButton.title = LocalizableConstants.ButtonTitle.exit
+        startGameButton.title = LocalizableConstants.ButtonTitle.start
         configurationButton(startGameButton, 40)
         configurationButton(scoreButton, 40)
         configurationButton(settingsButton, 40)

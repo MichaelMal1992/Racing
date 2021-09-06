@@ -20,7 +20,7 @@ class ChangePlayerViewController: UIViewController {
         super.viewDidLoad()
 
         setupSearchTextField()
-        cancelButton.title = LocalizableConstants.ButtonTitle.cancel
+        cancelButton.title = LocalizableConstants.ButtonTitle.back
         configurationButton(cancelButton, 25)
         listPlayersTableView.dataSource = self
         listPlayersTableView.delegate = self

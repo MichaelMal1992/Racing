@@ -35,13 +35,12 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak private var backPassingCarButton: UIButton!
     @IBOutlet weak private var nameTextLabel: UILabel!
     @IBOutlet weak private var accelerometerLabel: UILabel!
-    @IBOutlet weak var valueOfAccelerometrLabel: UILabel!
+    @IBOutlet weak private var valueOfAccelerometrLabel: UILabel!
     @IBOutlet weak private var passingCarsLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var oncomingCarsLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var playerCarLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak private var backgroundBlurEffectView: UIVisualEffectView!
     @IBOutlet weak private var accelerometerSwitch: UISwitch!
-    @IBOutlet weak private var widthCancelButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak private var namePlayerLabel: UILabel!
     @IBOutlet weak private var createPlayerLabel: UILabel!
     @IBOutlet weak private var speedLabel: UILabel!
@@ -54,13 +53,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak private var systemVolumeLabel: UILabel!
     @IBOutlet weak private var valueOfSystemVolumeLabel: UILabel!
     @IBOutlet weak private var systemVolumeSlider: UISlider!
+    @IBOutlet weak var cancelAddNameButton: UIButton!
     private var count = 0
     private var isDidChoose = false
     private var currentPlayerSettings: CurrentSettings?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        widthCancelButtonConstraint.constant = 0
         setupButtons()
         setupLabels()
         setupTextField()
@@ -115,10 +114,10 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction private func cancelAddNameButtonPressed(_ sender: UIButton) {
+        cancelAddNameButton.isHidden = true
         namePlayerLabel.text = RealmManager.shared.currentPlayer?.name
         addNameTextField.text?.removeAll()
         addNameTextField.resignFirstResponder()
-        widthCancelButtonConstraint.constant = 0
     }
 
     @IBAction private func changePlayerButtonPressed(_ sender: UIButton) {
@@ -328,6 +327,10 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupTextField() {
+        let text = LocalizableConstants.TextField.placeHolder
+        let attributed = NSAttributedString(string: text,
+                                            attributes: [.foregroundColor: UIColor.gray])
+        addNameTextField.attributedPlaceholder = attributed
         addNameTextField.delegate = self
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(addNameTextFieldDidChange),
@@ -348,6 +351,7 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupButtons() {
+        cancelAddNameButton.isHidden = true
         saveButton.title = LocalizableConstants.ButtonTitle.save
         backButton.title = LocalizableConstants.ButtonTitle.back
         oncomingCarsButton.title = LocalizableConstants.ButtonTitle.oncoming
@@ -360,9 +364,9 @@ class SettingsViewController: UIViewController {
         nextPlayerCarButton.title = LocalizableConstants.ButtonTitle.next
         nextPassingCarButton.title = LocalizableConstants.ButtonTitle.next
         nextOncomingCarsButton.title = LocalizableConstants.ButtonTitle.next
-        backPlayerCarButton.title = LocalizableConstants.ButtonTitle.back
-        backOncomingCarsButton.title = LocalizableConstants.ButtonTitle.back
-        backPassingCarButton.title = LocalizableConstants.ButtonTitle.back
+        backPlayerCarButton.title = LocalizableConstants.ButtonTitle.backChooseCar
+        backOncomingCarsButton.title = LocalizableConstants.ButtonTitle.backChooseCar
+        backPassingCarButton.title = LocalizableConstants.ButtonTitle.backChooseCar
         configurationButton(saveButton, 25)
         configurationButton(backButton, 25)
         configurationButton(oncomingCarsButton, 20)
@@ -491,7 +495,6 @@ extension SettingsViewController: UITextFieldDelegate {
                 addNameTextField.text = text
             } else {
                 currentPlayerSettings?.name = text
-                widthCancelButtonConstraint.constant = 0
                 controlStateSwitch()
                 setupSliders()
             }
@@ -502,10 +505,11 @@ extension SettingsViewController: UITextFieldDelegate {
             return false
         }
         addNameTextField.resignFirstResponder()
+        cancelAddNameButton.isHidden = true
         return true
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        widthCancelButtonConstraint.constant = 60
+        cancelAddNameButton.isHidden = false
     }
 }

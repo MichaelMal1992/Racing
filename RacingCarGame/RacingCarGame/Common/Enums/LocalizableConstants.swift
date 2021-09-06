@@ -24,7 +24,7 @@ enum LocalizableConstants {
         static let okay = "ok".localize
         static let next = "next".localize
         static let reset = "reset".localize
-        static let cancel = "cancelButton".localize
+        static let backChooseCar = "backChooseCar".localize
     }
     enum LabelText {
         static let score = "score".localize
@@ -60,5 +60,8 @@ enum LocalizableConstants {
     enum Notification {
         static let title = "title".localize
         static let body = "body".localize
+    }
+    enum TextField {
+        static let placeHolder = "enterName".localize
     }
 }

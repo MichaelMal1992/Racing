@@ -23,6 +23,8 @@
 		8440210326B639BB00E07DB7 /* gameOverMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8440210226B639BB00E07DB7 /* gameOverMusic.mp3 */; };
 		8440210626B6464D00E07DB7 /* menuMusic7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8440210526B6464D00E07DB7 /* menuMusic7.mp3 */; };
 		8448440A26DD2A8100BBBD0B /* CurrentSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448440926DD2A8100BBBD0B /* CurrentSettings.swift */; };
+		844A740A26E5910E0084DC92 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844A740C26E5910E0084DC92 /* Localizable.strings */; };
+		844A741226E592280084DC92 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844A741426E592280084DC92 /* InfoPlist.strings */; };
 		844AD0A426B693BF008A217F /* gameMusic6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD09726B693BF008A217F /* gameMusic6.mp3 */; };
 		844AD0AD26B6973F008A217F /* carsCrash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0AC26B6973F008A217F /* carsCrash.mp3 */; };
 		844AD0BB26B6A3C7008A217F /* speedRushCar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844AD0BA26B6A3C7008A217F /* speedRushCar.mp3 */; };
@@ -70,8 +72,6 @@
 		84FA308426E556D800C964F4 /* LocalizableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA308326E556D800C964F4 /* LocalizableConstants.swift */; };
 		84FA308926E55BD100C964F4 /* UIButton+setTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA308826E55BD100C964F4 /* UIButton+setTitle.swift */; };
 		84FA309526E5708000C964F4 /* String+localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA309426E5708000C964F4 /* String+localize.swift */; };
-		84FA309826E576F800C964F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA309A26E576F800C964F4 /* InfoPlist.strings */; };
-		84FA309C26E57F8600C964F4 /* Lolalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA309126E56E4300C964F4 /* Lolalizable.strings */; };
 		97C2C990682112C67930452C /* Pods_RacingCarGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC09F0FCD1B49C29096B1E68 /* Pods_RacingCarGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +92,12 @@
 		8440210226B639BB00E07DB7 /* gameOverMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOverMusic.mp3; sourceTree = "<group>"; };
 		8440210526B6464D00E07DB7 /* menuMusic7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic7.mp3; sourceTree = "<group>"; };
 		8448440926DD2A8100BBBD0B /* CurrentSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSettings.swift; sourceTree = "<group>"; };
+		844A740B26E5910E0084DC92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		844A740D26E591450084DC92 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		844A740E26E591450084DC92 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		844A740F26E591460084DC92 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		844A741326E592280084DC92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		844A741526E5922B0084DC92 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		844AD09726B693BF008A217F /* gameMusic6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic6.mp3; sourceTree = "<group>"; };
 		844AD0AC26B6973F008A217F /* carsCrash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = carsCrash.mp3; sourceTree = "<group>"; };
 		844AD0BA26B6A3C7008A217F /* speedRushCar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = speedRushCar.mp3; sourceTree = "<group>"; };
@@ -140,13 +146,8 @@
 		84FA305126E4F83600C964F4 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
 		84FA308326E556D800C964F4 /* LocalizableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableConstants.swift; sourceTree = "<group>"; };
 		84FA308826E55BD100C964F4 /* UIButton+setTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+setTitle.swift"; sourceTree = "<group>"; };
-		84FA308B26E56DF500C964F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		84FA308C26E56DF600C964F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		84FA309026E56E4300C964F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Lolalizable.strings; sourceTree = "<group>"; };
-		84FA309226E56E4700C964F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Lolalizable.strings; sourceTree = "<group>"; };
 		84FA309426E5708000C964F4 /* String+localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localize.swift"; sourceTree = "<group>"; };
-		84FA309926E576F800C964F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		84FA309B26E576FD00C964F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84FA30B926E58D3700C964F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8F37550570BB89BAD4461E4D /* Pods-RacingCarGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingCarGame.debug.xcconfig"; path = "Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame.debug.xcconfig"; sourceTree = "<group>"; };
 		EC09F0FCD1B49C29096B1E68 /* Pods_RacingCarGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RacingCarGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CBBFE930680872091C9CFF /* Pods-RacingCarGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RacingCarGame.release.xcconfig"; path = "Target Support Files/Pods-RacingCarGame/Pods-RacingCarGame.release.xcconfig"; sourceTree = "<group>"; };
@@ -523,7 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				84D4B876265667AD004BA330 /* Assets.xcassets */,
-				84FA308A26E56D8700C964F4 /* Localize */,
+				84FA308A26E56D8700C964F4 /* Localization */,
 				844AD09126B69347008A217F /* Music */,
 				84EC828F2662B16E00CC593D /* Fonts */,
 			);
@@ -575,13 +576,13 @@
 			path = UIButton;
 			sourceTree = "<group>";
 		};
-		84FA308A26E56D8700C964F4 /* Localize */ = {
+		84FA308A26E56D8700C964F4 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				84FA309126E56E4300C964F4 /* Lolalizable.strings */,
-				84FA309A26E576F800C964F4 /* InfoPlist.strings */,
+				844A740C26E5910E0084DC92 /* Localizable.strings */,
+				844A741426E592280084DC92 /* InfoPlist.strings */,
 			);
-			path = Localize;
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		84FA309326E5705100C964F4 /* String */ = {
@@ -668,7 +669,6 @@
 				84E923C126AEFD5F00C12B79 /* PlayersScoresTableViewCell.xib in Resources */,
 				84E923D826B42EDA00C12B79 /* gameMusic3.mp3 in Resources */,
 				844020F626B62F4C00E07DB7 /* menuMusic3.mp3 in Resources */,
-				84FA309C26E57F8600C964F4 /* Lolalizable.strings in Resources */,
 				844AD0BF26B70C31008A217F /* carTurn.mp3 in Resources */,
 				844AD0C326B7166D008A217F /* carsTrafic.mp3 in Resources */,
 				844AD0D726B77F49008A217F /* jump.mp3 in Resources */,
@@ -681,11 +681,12 @@
 				84EC829E2662CEF900CC593D /* Decaying Felt Pen.ttf in Resources */,
 				8440210126B634E700E07DB7 /* gameMusic5.mp3 in Resources */,
 				844AD0A426B693BF008A217F /* gameMusic6.mp3 in Resources */,
-				84FA309826E576F800C964F4 /* InfoPlist.strings in Resources */,
 				8440210626B6464D00E07DB7 /* menuMusic7.mp3 in Resources */,
+				844A741226E592280084DC92 /* InfoPlist.strings in Resources */,
 				84E923D926B42EDA00C12B79 /* gameMusic2.mp3 in Resources */,
 				844AD0BB26B6A3C7008A217F /* speedRushCar.mp3 in Resources */,
 				844020F926B6335C00E07DB7 /* gameMusic4.mp3 in Resources */,
+				844A740A26E5910E0084DC92 /* Localizable.strings in Resources */,
 				844020FB26B633B700E07DB7 /* menuMusic4.mp3 in Resources */,
 				84E923DA26B42EDA00C12B79 /* gameMusic1.mp3 in Resources */,
 				844020FD26B633F500E07DB7 /* menuMusic5.mp3 in Resources */,
@@ -823,11 +824,29 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		844A740C26E5910E0084DC92 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				844A740B26E5910E0084DC92 /* en */,
+				844A740F26E591460084DC92 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		844A741426E592280084DC92 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				844A741326E592280084DC92 /* en */,
+				844A741526E5922B0084DC92 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		84D4B873265667AA004BA330 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84D4B874265667AA004BA330 /* Base */,
-				84FA308B26E56DF500C964F4 /* ru */,
+				844A740D26E591450084DC92 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -836,27 +855,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				84D4B879265667AD004BA330 /* Base */,
-				84FA308C26E56DF600C964F4 /* ru */,
+				84FA30B926E58D3700C964F4 /* en */,
+				844A740E26E591450084DC92 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		84FA309126E56E4300C964F4 /* Lolalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84FA309026E56E4300C964F4 /* en */,
-				84FA309226E56E4700C964F4 /* ru */,
-			);
-			name = Lolalizable.strings;
-			sourceTree = "<group>";
-		};
-		84FA309A26E576F800C964F4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84FA309926E576F800C964F4 /* en */,
-				84FA309B26E576FD00C964F4 /* ru */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
