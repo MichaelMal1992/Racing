@@ -1,0 +1,129 @@
+
+/* Class = "UIButton"; normalTitle = "cancel"; ObjectID = "1kD-J4-b1W"; */
+"1kD-J4-b1W.normalTitle" = "cancel";
+
+/* Class = "UILabel"; text = "MUSIC VOLUME:"; ObjectID = "3R2-2o-qeg"; */
+"3R2-2o-qeg.text" = "MUSIC VOLUME:";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "3b0-gz-HpK"; */
+"3b0-gz-HpK.normalTitle" = "NEXT";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "5Da-jW-Y4p"; */
+"5Da-jW-Y4p.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "999"; ObjectID = "5Xw-ma-WT0"; */
+"5Xw-ma-WT0.text" = "999";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "70t-6v-HZI"; */
+"70t-6v-HZI.text" = "100";
+
+/* Class = "UIButton"; normalTitle = "EXIT"; ObjectID = "8ra-Fb-EDn"; */
+"8ra-Fb-EDn.normalTitle" = "EXIT";
+
+/* Class = "UILabel"; text = "ACCELEROMETER:"; ObjectID = "EvZ-pJ-LXC"; */
+"EvZ-pJ-LXC.text" = "ACCELEROMETER:";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "G57-Ny-swc"; */
+"G57-Ny-swc.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "Score"; ObjectID = "GCp-zR-qZG"; */
+"GCp-zR-qZG.text" = "Score";
+
+/* Class = "UIButton"; normalTitle = "PASSING"; ObjectID = "Hyw-zH-LbT"; */
+"Hyw-zH-LbT.normalTitle" = "PASSING";
+
+/* Class = "UIButton"; normalTitle = "SETTINGS"; ObjectID = "J1N-bA-sou"; */
+"J1N-bA-sou.normalTitle" = "SETTINGS";
+
+/* Class = "UILabel"; text = "SPEED:"; ObjectID = "M2F-zc-znV"; */
+"M2F-zc-znV.text" = "SPEED:";
+
+/* Class = "UIButton"; normalTitle = "CHANGE"; ObjectID = "M4m-lQ-EtY"; */
+"M4m-lQ-EtY.normalTitle" = "CHANGE";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "M8Q-xo-FT5"; */
+"M8Q-xo-FT5.normalTitle" = "SAVE";
+
+/* Class = "UILabel"; text = "1.32"; ObjectID = "NEo-DW-HhF"; */
+"NEo-DW-HhF.text" = "1.32";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "PQD-lD-SEY"; */
+"PQD-lD-SEY.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QCO-Gg-vCa"; */
+"QCO-Gg-vCa.text" = "Label";
+
+/* Class = "UILabel"; text = "SCORES"; ObjectID = "QG8-3r-Org"; */
+"QG8-3r-Org.text" = "SCORES";
+
+/* Class = "UIButton"; normalTitle = "SCORE"; ObjectID = "XhR-P1-UsI"; */
+"XhR-P1-UsI.normalTitle" = "SCORE";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "XsG-OY-HU4"; */
+"XsG-OY-HU4.text" = "100";
+
+/* Class = "UIButton"; normalTitle = "PLAYER"; ObjectID = "Z5U-z0-Tq4"; */
+"Z5U-z0-Tq4.normalTitle" = "PLAYER";
+
+/* Class = "UIButton"; normalTitle = "RESET"; ObjectID = "aPj-rw-K36"; */
+"aPj-rw-K36.normalTitle" = "RESET";
+
+/* Class = "UIButton"; normalTitle = "START GAME"; ObjectID = "bqD-l3-01M"; */
+"bqD-l3-01M.normalTitle" = "START GAME";
+
+/* Class = "UITextField"; placeholder = "Enter a new name"; ObjectID = "c9y-UF-65g"; */
+"c9y-UF-65g.placeholder" = "Enter a new name";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "fQB-3e-80W"; */
+"fQB-3e-80W.normalTitle" = "CANCEL";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "fQQ-lR-eam"; */
+"fQQ-lR-eam.normalTitle" = "OK";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "hoB-bm-YAj"; */
+"hoB-bm-YAj.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "SYSTEM VOLUME:"; ObjectID = "i4S-1Y-vZy"; */
+"i4S-1Y-vZy.text" = "SYSTEM VOLUME:";
+
+/* Class = "UILabel"; text = "NAME:"; ObjectID = "jSo-RZ-2Sx"; */
+"jSo-RZ-2Sx.text" = "NAME:";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "kYA-is-IzD"; */
+"kYA-is-IzD.normalTitle" = "NEXT";
+
+/* Class = "UIButton"; normalTitle = "EXIT"; ObjectID = "kYQ-I2-b0E"; */
+"kYQ-I2-b0E.normalTitle" = "EXIT";
+
+/* Class = "UIButton"; normalTitle = "NEXT"; ObjectID = "kgI-uQ-ine"; */
+"kgI-uQ-ine.normalTitle" = "NEXT";
+
+/* Class = "UIButton"; normalTitle = "ONCOMING"; ObjectID = "mnD-Py-zyJ"; */
+"mnD-Py-zyJ.normalTitle" = "ONCOMING";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "mqB-Ll-V4U"; */
+"mqB-Ll-V4U.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "1.32"; ObjectID = "rQq-I3-Qsv"; */
+"rQq-I3-Qsv.text" = "1.32";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "rTX-G1-Qbd"; */
+"rTX-G1-Qbd.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "CREATE:"; ObjectID = "rW8-DK-n8e"; */
+"rW8-DK-n8e.text" = "CREATE:";
+
+/* Class = "UILabel"; text = "PLAYER"; ObjectID = "rhU-K9-sc5"; */
+"rhU-K9-sc5.text" = "PLAYER";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "rhZ-hg-LC7"; */
+"rhZ-hg-LC7.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "HOME"; ObjectID = "tIz-Qa-jRk"; */
+"tIz-Qa-jRk.normalTitle" = "HOME";
+
+/* Class = "UILabel"; text = "CARS:"; ObjectID = "xOO-rT-DyB"; */
+"xOO-rT-DyB.text" = "CARS:";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "xik-qb-TPd"; */
+"xik-qb-TPd.normalTitle" = "BACK";

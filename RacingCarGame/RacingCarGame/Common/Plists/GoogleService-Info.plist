@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>888232148662-o026bmevrcs51sfgadn6h9g99e2qhgag.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.888232148662-o026bmevrcs51sfgadn6h9g99e2qhgag</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCDQkTMoveS1rfQWhZoKU4FGrvbhAG9HtU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>888232148662</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>michael.vasm.RacingCarGame</string>
+	<key>PROJECT_ID</key>
+	<string>racing-e3b3f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>racing-e3b3f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:888232148662:ios:765fe648fcaf337244f017</string>
+</dict>
+</plist>
